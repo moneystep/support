@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moneystep — Legal</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --surface: #141416;
+      --border: #222226;
+      --accent: #c8f04a;
+      --accent-dim: rgba(200,240,74,0.12);
+      --text: #e8e8ec;
+      --text-muted: #7a7a85;
+      --text-dim: #4a4a55;
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+      --radius: 12px;
+      --max: 760px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 16px; line-height: 1.75; font-weight: 300; -webkit-font-smoothing: antialiased; }
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(13,13,15,0.9); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 24px; }
+    .nav-inner { max-width: var(--max); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 56px; gap: 16px; }
+    .wordmark { font-family: var(--serif); font-size: 20px; color: var(--accent); letter-spacing: -0.02em; white-space: nowrap; }
+    .nav-links { display: flex; gap: 4px; list-style: none; }
+    .nav-links a { display: block; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 500; color: var(--text-muted); text-decoration: none; transition: color 0.2s, background 0.2s; white-space: nowrap; }
+    .nav-links a:hover { color: var(--text); background: var(--accent-dim); }
+    .hero { max-width: var(--max); margin: 0 auto; padding: 72px 24px 48px; border-bottom: 1px solid var(--border); }
+    .hero-label { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); background: var(--accent-dim); padding: 4px 12px; border-radius: 20px; margin-bottom: 24px; }
+    .hero h1 { font-family: var(--serif); font-size: clamp(36px, 6vw, 52px); line-height: 1.1; letter-spacing: -0.03em; color: var(--text); margin-bottom: 16px; }
+    .hero p { font-size: 15px; color: var(--text-muted); max-width: 540px; }
+    .hero-meta { margin-top: 32px; display: flex; gap: 32px; flex-wrap: wrap; }
+    .meta-item { display: flex; flex-direction: column; gap: 2px; }
+    .meta-label { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); }
+    .meta-value { font-size: 14px; color: var(--text-muted); }
+    .toc-wrapper { max-width: var(--max); margin: 0 auto; padding: 48px 24px 0; }
+    .toc-doc-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin: 32px 0 16px; }
+    .toc-doc-label:first-child { margin-top: 0; }
+    .toc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 540px) { .toc-grid { grid-template-columns: 1fr; } }
+    .toc-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 24px; text-decoration: none; display: flex; align-items: center; gap: 14px; transition: border-color 0.2s, background 0.2s; }
+    .toc-card:hover { border-color: var(--accent); background: var(--accent-dim); }
+    .toc-number { font-family: var(--serif); font-size: 28px; color: var(--text-dim); line-height: 1; min-width: 28px; }
+    .toc-card:hover .toc-number { color: var(--accent); }
+    .toc-text { display: flex; flex-direction: column; gap: 2px; }
+    .toc-section { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); }
+    .toc-title { font-size: 14px; font-weight: 500; color: var(--text); }
+    main { max-width: var(--max); margin: 0 auto; padding: 64px 24px 120px; }
+    .doc-section { margin-bottom: 80px; }
+    .section-header { display: flex; align-items: center; gap: 16px; margin-bottom: 40px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+    .section-tag { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); background: var(--accent-dim); padding: 4px 12px; border-radius: 20px; white-space: nowrap; }
+    .section-header h2 { font-family: var(--serif); font-size: clamp(28px, 4vw, 38px); letter-spacing: -0.02em; color: var(--text); line-height: 1.15; }
+    article { display: flex; flex-direction: column; gap: 40px; }
+    .clause { padding-left: 24px; border-left: 2px solid var(--border); transition: border-color 0.2s; scroll-margin-top: 72px; }
+    .clause:hover { border-left-color: var(--accent); }
+    .clause h3 { font-family: var(--sans); font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+    .clause p { font-size: 15px; color: var(--text-muted); margin-bottom: 12px; }
+    .clause p:last-child { margin-bottom: 0; }
+    .clause ul, .clause ol { padding-left: 20px; display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
+    .clause li { font-size: 15px; color: var(--text-muted); }
+    .clause li::marker { color: var(--accent); }
+    .callout { background: var(--accent-dim); border: 1px solid rgba(200,240,74,0.25); border-radius: var(--radius); padding: 20px 24px; margin: 12px 0; }
+    .callout p { font-size: 14px; color: var(--text); margin: 0; }
+    .callout strong { color: var(--accent); }
+    .doc-divider { border: none; border-top: 1px solid var(--border); margin: 80px 0; }
+    .contact-block { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; text-align: center; margin-top: 64px; }
+    .contact-block h4 { font-family: var(--serif); font-size: 22px; color: var(--text); margin-bottom: 8px; }
+    .contact-block p { font-size: 14px; color: var(--text-muted); margin-bottom: 16px; }
+    .contact-block a { display: inline-block; padding: 10px 24px; background: var(--accent); color: #0d0d0f; font-weight: 600; font-size: 14px; border-radius: 8px; text-decoration: none; transition: opacity 0.2s; }
+    .contact-block a:hover { opacity: 0.85; }
+    footer { border-top: 1px solid var(--border); padding: 32px 24px; text-align: center; }
+    footer p { font-size: 13px; color: var(--text-dim); }
+    footer a { color: var(--text-muted); text-decoration: none; }
+    footer a:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+ 
+  <nav>
+    <div class="nav-inner">
+      <span class="wordmark">Moneystep</span>
+      <ul class="nav-links">
+        <li><a href="#privacy">Privacy Policy</a></li>
+        <li><a href="#terms">Terms of Service</a></li>
+      </ul>
+    </div>
+  </nav>
+ 
+  <div class="hero">
+    <span class="hero-label">Legal Documents</span>
+    <h1>Privacy &amp; Terms</h1>
+    <p>These documents govern your use of Moneystep (the &ldquo;Platform&rdquo;). Please read them carefully before using the app.</p>
+    <div class="hero-meta">
+      <div class="meta-item">
+        <span class="meta-label">Effective Date</span>
+        <span class="meta-value">June 6, 2026</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Operator</span>
+        <span class="meta-value">Moneystep</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Governing Law</span>
+        <span class="meta-value">State of Texas</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Contact</span>
+        <span class="meta-value">hello@moneystep.app</span>
+      </div>
+    </div>
+  </div>
+ 
+  <div class="toc-wrapper">
+    <div class="toc-doc-label">Privacy Policy</div>
+    <div class="toc-grid">
+      <a class="toc-card" href="#pp-data">
+        <span class="toc-number">1</span>
+        <div class="toc-text"><span class="toc-section">Privacy</span><span class="toc-title">Data We Collect</span></div>
+      </a>
+      <a class="toc-card" href="#pp-health">
+        <span class="toc-number">2</span>
+        <div class="toc-text"><span class="toc-section">Privacy</span><span class="toc-title">Health &amp; Step Data</span></div>
+      </a>
+      <a class="toc-card" href="#pp-third-party">
+        <span class="toc-number">3</span>
+        <div class="toc-text"><span class="toc-section">Privacy</span><span class="toc-title">Third-Party Services</span></div>
+      </a>
+      <a class="toc-card" href="#pp-sharing">
+        <span class="toc-number">4</span>
+        <div class="toc-text"><span class="toc-section">Privacy</span><span class="toc-title">Data Sharing &amp; Sale</span></div>
+      </a>
+      <a class="toc-card" href="#pp-security">
+        <span class="toc-number">5</span>
+        <div class="toc-text"><span class="toc-section">Privacy</span><span class="toc-title">Data Security</span></div>
+      </a>
+      <a class="toc-card" href="#pp-retention">
+        <span class="toc-number">6</span>
+        <div class="toc-text"><span class="toc-section">Privacy</span><span class="toc-title">Data Retention &amp; Deletion</span></div>
+      </a>
+      <a class="toc-card" href="#pp-children">
+        <span class="toc-number">7</span>
+        <div class="toc-text"><span class="toc-section">Privacy</span><span class="toc-title">Children's Privacy</span></div>
+      </a>
+      <a class="toc-card" href="#pp-changes">
+        <span class="toc-number">8</span>
+        <div class="toc-text"><span class="toc-section">Privacy</span><span class="toc-title">Changes to This Policy</span></div>
+      </a>
+    </div>
+ 
+    <div class="toc-doc-label">Terms of Service</div>
+    <div class="toc-grid">
+      <a class="toc-card" href="#tos-agreement">
+        <span class="toc-number">1</span>
+        <div class="toc-text"><span class="toc-section">Terms</span><span class="toc-title">Agreement</span></div>
+      </a>
+      <a class="toc-card" href="#tos-eligibility">
+        <span class="toc-number">2</span>
+        <div class="toc-text"><span class="toc-section">Terms</span><span class="toc-title">Eligibility</span></div>
+      </a>
+      <a class="toc-card" href="#tos-skill">
+        <span class="toc-number">3</span>
+        <div class="toc-text"><span class="toc-section">Terms</span><span class="toc-title">Skill-Based Competition</span></div>
+      </a>
+      <a class="toc-card" href="#tos-fees">
+        <span class="toc-number">4</span>
+        <div class="toc-text"><span class="toc-section">Terms</span><span class="toc-title">Entry Fees &amp; Payment</span></div>
+      </a>
+      <a class="toc-card" href="#tos-exit">
+        <span class="toc-number">5</span>
+        <div class="toc-text"><span class="toc-section">Terms</span><span class="toc-title">Exiting a Challenge</span></div>
+      </a>
+      <a class="toc-card" href="#tos-sync">
+        <span class="toc-number">6</span>
+        <div class="toc-text"><span class="toc-section">Terms</span><span class="toc-title">Step Data Sync</span></div>
+      </a>
+      <a class="toc-card" href="#tos-health">
+        <span class="toc-number">7</span>
+        <div class="toc-text"><span class="toc-section">Terms</span><span class="toc-title">Health &amp; Safety</span></div>
+      </a>
+      <a class="toc-card" href="#tos-tax">
+        <span class="toc-number">8</span>
+        <div class="toc-text"><span class="toc-section">Terms</span><span class="toc-title">Tax Obligations</span></div>
+      </a>
+      <a class="toc-card" href="#tos-conduct">
+        <span class="toc-number">9</span>
+        <div class="toc-text"><span class="toc-section">Terms</span><span class="toc-title">Prohibited Conduct</span></div>
+      </a>
+      <a class="toc-card" href="#tos-liability">
+        <span class="toc-number">10</span>
+        <div class="toc-text"><span class="toc-section">Terms</span><span class="toc-title">Liability &amp; Disclaimers</span></div>
+      </a>
+      <a class="toc-card" href="#tos-disputes">
+        <span class="toc-number">11</span>
+        <div class="toc-text"><span class="toc-section">Terms</span><span class="toc-title">Disputes &amp; Class Waiver</span></div>
+      </a>
+      <a class="toc-card" href="#tos-governing">
+        <span class="toc-number">12</span>
+        <div class="toc-text"><span class="toc-section">Terms</span><span class="toc-title">Governing Law</span></div>
+      </a>
+      <a class="toc-card" href="#tos-termination">
+        <span class="toc-number">13</span>
+        <div class="toc-text"><span class="toc-section">Terms</span><span class="toc-title">Account Termination</span></div>
+      </a>
+      <a class="toc-card" href="#tos-severability">
+        <span class="toc-number">14</span>
+        <div class="toc-text"><span class="toc-section">Terms</span><span class="toc-title">Severability</span></div>
+      </a>
+      <a class="toc-card" href="#tos-entire">
+        <span class="toc-number">15</span>
+        <div class="toc-text"><span class="toc-section">Terms</span><span class="toc-title">Entire Agreement</span></div>
+      </a>
+      <a class="toc-card" href="#tos-changes">
+        <span class="toc-number">16</span>
+        <div class="toc-text"><span class="toc-section">Terms</span><span class="toc-title">Changes to Terms</span></div>
+      </a>
+    </div>
+  </div>
+ 
+  <main>
+ 
+    <!-- PRIVACY POLICY -->
+    <section class="doc-section" id="privacy">
+      <div class="section-header">
+        <span class="section-tag">Privacy Policy</span>
+        <h2>How We Handle Your Data</h2>
+      </div>
+      <article>
+ 
+        <div class="clause" id="pp-data">
+          <h3>1. Data We Collect</h3>
+          <p>When you create an account and use the Platform, we collect the following information:</p>
+          <ul>
+            <li>Account information: username, email address, phone number, and profile photo</li>
+            <li>Financial information: transaction history, entry fees paid, winnings received, and wallet balance</li>
+            <li>Step count data: daily step totals sourced from Apple HealthKit or Google Health Connect</li>
+            <li>Location data: your general location at the time of account creation for eligibility verification purposes only; this data is not stored beyond the verification check</li>
+            <li>Device information: device token for push notifications, operating system, and app version</li>
+            <li>Usage data: challenge participation history, competition results, and in-app activity</li>
+            <li>Payment and withdrawal information: when you request a payout, the full legal name and Zelle contact (phone number or email) you provide so we can send your winnings</li>
+            <li>Fraud-prevention data: records relating to suspicious, irregular, or anomalous activity, including flagged step totals and related details, retained to protect the integrity of competitions</li>
+          </ul>
+        </div>
+ 
+        <div class="clause" id="pp-health">
+          <h3>2. Health &amp; Step Data</h3>
+          <p>The Platform accesses your step count data from Apple HealthKit (iOS) or Google Health Connect (Android) for the sole purpose of tracking your performance in challenges.</p>
+          <div class="callout">
+            <p><strong>Step data retention:</strong> We store your detailed daily step data for up to 90 days to support challenges of varying lengths. Daily step data older than 90 days is automatically deleted from our servers on a rolling basis. We access historical step data from your health app to calculate your rank tier but do not store the underlying records beyond this window. Aggregated or derived figures — such as your rolling step average, cumulative challenge step totals, and your final step count in a completed challenge — are kept as part of your profile and competition records and may be retained longer.</p>
+          </div>
+          <p>We do not use your health data for advertising, sell it to third parties, or share it with any entity outside of the Platform for any purpose other than operating the app.</p>
+          <p>You may revoke HealthKit or Health Connect permissions at any time through your device settings. Revoking access will prevent step tracking from functioning and may affect your ability to participate in challenges.</p>
+        </div>
+ 
+        <div class="clause" id="pp-third-party">
+          <h3>3. Third-Party Services</h3>
+          <p>The Platform uses the following third-party services to operate:</p>
+          <ul>
+            <li><strong>Google Firebase</strong> — backend infrastructure, database, authentication, and push notifications. Data is stored on Firebase servers subject to Google's privacy policies.</li>
+            <li><strong>Apple HealthKit / Google Health Connect</strong> — read-only access to step count data on your device.</li>
+          </ul>
+          <p>We do not integrate advertising networks, analytics SDKs that track behavior across apps, or any other third-party data brokers.</p>
+        </div>
+ 
+        <div class="clause" id="pp-sharing">
+          <h3>4. Data Sharing &amp; Sale</h3>
+          <p>The Platform does not sell, rent, or trade your personal data to any third party under any circumstances.</p>
+          <p>We may disclose information only in the following limited circumstances, including but not limited to:</p>
+          <ul>
+            <li>When required by law, court order, or valid legal process</li>
+            <li>To comply with tax reporting obligations, including IRS requirements for issuing Form 1099</li>
+            <li>To prevent fraud, protect the safety of users, or enforce these terms</li>
+            <li>In connection with a merger, acquisition, or sale of all or substantially all assets of the Platform, in which case users will be notified</li>
+          </ul>
+          <div class="callout">
+            <p><strong>Information visible to other users:</strong> Moneystep is a social, competitive platform. To operate leaderboards, public profiles, and friend features, certain information is visible to other users — including your username, profile photo, rank tier, step averages, finishing places, career statistics (such as total winnings, entry fees paid, and net earnings), and the U.S. state associated with your account. Do not put anything in your username or profile photo that you would not want other users to see.</p>
+          </div>
+        </div>
+ 
+        <div class="clause" id="pp-security">
+          <h3>5. Data Security</h3>
+          <p>We use industry-standard security practices including encrypted data transmission (TLS) and Firebase security rules restricting data access to authenticated users. No method of electronic storage is 100% secure. We cannot guarantee absolute security but are committed to protecting your information.</p>
+        </div>
+ 
+        <div class="clause" id="pp-retention">
+          <h3>6. Data Retention &amp; Deletion</h3>
+          <p>You may request deletion of your account and associated data at any time through the app's account settings or by contacting us at hello@moneystep.app. To delete your account, you must first have no active challenge, no pending challenge settlement, and a zero wallet balance — withdraw any remaining funds before requesting deletion. We will process eligible deletion requests within 30 days.</p>
+          <p>Certain records are retained even after account deletion, to the extent permitted or required by law and for legitimate business, tax, and fraud-prevention purposes. These may include financial and transaction records, payout and withdrawal records (including the name and payment contact you provided), tax-related earnings records, completed challenge results, and records of suspicious or anomalous activity. We retain these only as long as reasonably necessary for those purposes.</p>
+        </div>
+ 
+        <div class="clause" id="pp-children">
+          <h3>7. Children's Privacy</h3>
+          <p>The Platform is strictly for users aged 18 and older. We do not knowingly collect personal information from anyone under 18. If we become aware that a minor has created an account, we will terminate the account and delete all associated data immediately.</p>
+        </div>
+ 
+        <div class="clause" id="pp-changes">
+          <h3>8. Changes to This Policy</h3>
+          <p>We may update this Privacy Policy from time to time. We will notify users of material changes via push notification or email. Continued use of the app after changes take effect constitutes acceptance of the updated policy. The effective date at the top of this page will reflect the most recent revision.</p>
+        </div>
+ 
+      </article>
+    </section>
+ 
+    <hr class="doc-divider" />
+ 
+    <!-- TERMS OF SERVICE -->
+    <section class="doc-section" id="terms">
+      <div class="section-header">
+        <span class="section-tag">Terms of Service</span>
+        <h2>Rules of the Platform</h2>
+      </div>
+      <article>
+ 
+        <div class="clause" id="tos-agreement">
+          <h3>1. Agreement</h3>
+          <p>By downloading, installing, or using the Platform, you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree to these terms, do not use the app. These terms constitute a legally binding agreement between you and the Platform. Your continued use of the app constitutes your ongoing acceptance of these terms as they may be updated from time to time.</p>
+        </div>
+ 
+        <div class="clause" id="tos-eligibility">
+          <h3>2. Eligibility</h3>
+          <p>To use the Platform you must:</p>
+          <ul>
+            <li>Be at least 18 years of age</li>
+            <li>Be a resident of the United States physically located in an eligible state at the time of account creation and at the time of each challenge enrollment</li>
+            <li>Physically take all steps counted toward any challenge while located within an eligible state; steps taken while in an excluded jurisdiction do not count toward challenge results regardless of where your account was created</li>
+            <li>Not be prohibited from participating in skill-based competitions by any applicable law or regulation in your current jurisdiction</li>
+          </ul>
+          <div class="callout">
+            <p><strong>Employees and owners:</strong> Employees, owners, and operators of the Platform may participate in challenges, but are not eligible to win or receive any cash prize, payout, or winnings of any kind. For payout purposes they are treated as if they were not in the standings: any prize position they would have occupied passes to the next eligible participant, so every eligible participant below them moves up accordingly.</p>
+          </div>
+          <div class="callout">
+            <p><strong>Step history requirement:</strong> To enroll in a challenge, your account must have a history of recorded step data over the preceding 28 days. This requirement helps ensure that your step source is active and reliably recording before you compete. Manually entered step data does not count toward this requirement. If your account does not meet the step history requirement, you will not be able to enroll until sufficient recorded step data is present. The Platform may adjust the parameters of this requirement at any time and at its sole discretion.</p>
+          </div>
+          <div class="callout">
+            <p><strong>Excluded states:</strong> The Platform is not available to users physically located in Arizona (AZ), Hawaii (HI), Idaho (ID), Montana (MT), Oregon (OR), Washington (WA), or Louisiana (LA) at the time of account creation or challenge enrollment. It is your sole responsibility to ensure that your participation is lawful in your current jurisdiction at all times. The Platform reserves the right to disqualify entries and withhold payouts where participation is determined to be in violation of applicable law.</p>
+          </div>
+          <p>You may maintain only one account per person. If the Platform discovers that you have opened more than one account, we reserve the right to suspend or terminate any or all of your accounts and forfeit any associated winnings or wallet balance.</p>
+        </div>
+ 
+        <div class="clause" id="tos-skill">
+          <h3>3. Skill-Based Competition</h3>
+          <p>The Platform is a skill-based competition platform. Challenge outcomes are determined entirely by step count performance, which reflects physical effort, fitness level, and activity — not chance. By participating, you acknowledge that results are based on skill and physical effort, that no outcome is guaranteed, and that the Platform makes no representations regarding your likelihood of winning any challenge.</p>
+        </div>
+ 
+        <div class="clause" id="tos-fees">
+          <h3>4. Entry Fees, Payment, and Refunds</h3>
+          <div class="callout">
+            <p><strong>How payment works:</strong> When you enroll in a paid challenge, you will be shown payment instructions. Entry fees are collected manually via Zelle prior to the challenge start. You must submit payment using the instructions provided and include your username in the memo. Enrollment in the app does not guarantee your spot — your entry is only confirmed once payment is received and verified by the Platform.</p>
+          </div>
+          <p><strong>Payment verification:</strong> The Platform reserves the right to remove any enrolled user who has not submitted verifiable payment prior to the challenge start. Removed users will be notified and will not be eligible to participate in that challenge.</p>
+          <div class="callout">
+            <p><strong>No refunds, ever:</strong> All entry fees are final and non-refundable. Once you have paid an entry fee, it will not be returned under any circumstances — including but not limited to voluntary exit (whether before or after the challenge begins), injury, illness, device malfunction, loss of connectivity, step sync failure, removal for prohibited conduct, or dissatisfaction with results. The only exception is a challenge cancelled by the Platform before it starts, as described below.</p>
+          </div>
+          <p><strong>Cancelled challenges:</strong> If a challenge is cancelled by the Platform prior to its start due to insufficient participation or any other reason, entry fees already received will be refunded in full. This is the only circumstance in which a refund will be issued.</p>
+          <p><strong>Prize payouts:</strong> A platform fee is deducted from the prize pool before distribution to winners. Payouts are credited to your in-app wallet upon challenge settlement, and you may request a withdrawal from the Payments &amp; Wallet section of the app. Withdrawals are paid via Zelle, and you will be asked to provide your Zelle information when you request one.</p>
+          <p><strong>Accurate withdrawal information is your responsibility:</strong> You are solely responsible for providing accurate and complete payment information when requesting a withdrawal, including your full name and correct Zelle phone number or email. If you provide incorrect, incomplete, or invalid payment information, your payout may be sent to the wrong recipient or fail to process, and the Platform is not responsible for funds lost as a result. We will not issue a replacement payout, refund, or reimbursement of any kind for payouts misdirected or lost due to information you provided. It is your responsibility to verify your payment details are correct before submitting a withdrawal request.</p>
+        </div>
+ 
+        <div class="clause" id="tos-exit">
+          <h3>5. Exiting a Challenge</h3>
+          <p>You may voluntarily exit a challenge at any time before or after it begins. The following rules apply:</p>
+          <ul>
+            <li><strong>Before the challenge starts:</strong> You will be removed from the challenge. Any entry fee you have already paid is non-refundable. You are free to join another challenge immediately.</li>
+            <li><strong>After the challenge starts:</strong> Your entry fee is non-refundable under any circumstances. You will be removed from the challenge and leaderboard. You are free to join another challenge immediately after exiting.</li>
+          </ul>
+          <p>Exits are recorded in your career statistics. Exiting mid-challenge counts as a last-place finish for statistical purposes.</p>
+        </div>
+ 
+        <div class="clause" id="tos-sync">
+          <h3>6. Step Data Sync Requirements</h3>
+          <p>To ensure accurate leaderboard standings and final results, users are responsible for the following:</p>
+          <ul>
+            <li><strong>A connected step source is required.</strong> The Platform reads your step data from Apple Health (iOS) or Google Health Connect (Android). You are responsible for ensuring a step source is actively recording steps into your health app and that Moneystep has been granted permission to read it. On Android in particular, Health Connect does not record steps on its own — it only stores step data provided by another app, such as your phone's health app or a connected wearable. If no step source is feeding your health app, or if permission is not granted, your steps will register as zero regardless of your physical activity. It is your sole responsibility to confirm your steps are being recorded before and during a challenge.</li>
+            <li><strong>You must choose a single step source, and only that source counts.</strong> Before enrolling, you are required to select one step source for the Platform to count from. Only steps recorded by the source you select will be counted toward your challenge results — steps from any other app, device, or source will not be included. The source you select is locked to your entry at the time you enroll and cannot be changed for the duration of that challenge. It is your responsibility to choose the source that accurately reflects the steps you physically take and to keep that source recording throughout the challenge. If your selected source stops recording or syncing, your step total may stop advancing, and the most recently synced total will be used. Manually entered steps are never counted, regardless of source.</li>
+            <li><strong>Keep your apps synced during a challenge.</strong> During an active challenge, make sure your steps and any connected health or fitness apps (such as your wearable's companion app, for example Garmin Connect) are synced and up to date, and open Moneystep at least once per calendar day. The Platform reads your step data from Apple Health or Google Health Connect when you open the app, and those services only contain your latest steps if your phone and any connected apps have synced.</li>
+            <li><strong>Post-challenge sync window.</strong> After a challenge has ended, make sure your steps and any connected health or fitness apps are synced and up to date, and open Moneystep within 24 hours of the challenge end time, so your complete step data is captured before results are finalized.</li>
+            <li><strong>Settlement timing.</strong> Challenge results are finalized approximately 24 hours after the challenge end time. Step data not synced by settlement will not be included in your final result.</li>
+            <li><strong>Incomplete sync liability.</strong> If you fail to sync within the 24-hour post-challenge window, your recorded step count at the time of settlement will be used as your final total. The Platform is not responsible for any difference between your actual steps and your synced step count.</li>
+            <li><strong>Syncing depends on your apps and on opening Moneystep.</strong> The Platform syncs your steps when you open Moneystep, and it can only read steps that your phone and connected apps have already synced into Apple Health or Google Health Connect. The Platform does not perform reliable automatic syncing while the app is closed or in the background, and you should not rely on background syncing for any reason. Keeping your health and fitness apps synced and up to date, and opening Moneystep to sync — including within the post-challenge window described above — is your responsibility.</li>
+            <li><strong>Android battery optimization.</strong> Some Android device manufacturers (including but not limited to Samsung, Xiaomi, Huawei, and OnePlus) apply aggressive battery saving features that may prevent Moneystep from receiving background notifications. If you use one of these devices, we recommend exempting Moneystep from battery optimization in your device settings. You can typically find this setting under Battery &rarr; App optimization or Battery &rarr; Background usage limits. The Platform is not responsible for missed notifications or incomplete step data resulting from manufacturer battery optimization settings.</li>
+            <li><strong>No liability for device or connectivity issues.</strong> The Platform is not responsible for incomplete, missing, or delayed step data resulting from device settings, device failures, manufacturer restrictions, network outages, or failure to sync within required timeframes.</li>
+          </ul>
+        </div>
+ 
+        <div class="clause" id="tos-health">
+          <h3>7. Health, Safety, and Assumption of Risk</h3>
+          <div class="callout">
+            <p><strong>Important:</strong> Physical exercise carries inherent risk of injury, illness, and death, particularly for individuals with pre-existing health conditions, prior injuries, or those who are not regularly physically active.</p>
+          </div>
+          <p>By participating in challenges on the Platform, you acknowledge and agree that:</p>
+          <ul>
+            <li>You are voluntarily choosing to engage in physical activity and do so entirely at your own risk</li>
+            <li>You have consulted or will consult with a qualified healthcare provider before beginning any new or increased exercise program</li>
+            <li>The Platform is not responsible for any injury, illness, death, disability, or adverse health outcome of any kind arising from or related to your participation, including but not limited to overexertion, cardiovascular events, musculoskeletal injuries, or accidents occurring while walking or running</li>
+            <li>You hereby release, waive, discharge, and covenant not to sue the Platform and its operators, officers, employees, agents, successors, and assigns from any and all claims, demands, damages, causes of action, or liabilities of any kind arising from physical activity undertaken in connection with the Platform, whether caused by negligence or otherwise</li>
+          </ul>
+        </div>
+ 
+        <div class="clause" id="tos-tax">
+          <h3>8. Tax Obligations and 1099 Reporting</h3>
+          <p>You are solely responsible for all taxes arising from prizes and winnings earned through the Platform. In accordance with United States tax law:</p>
+          <ul>
+            <li>If your cumulative gross winnings in a single calendar year equal or exceed <strong>$600</strong>, the Platform is required to issue you a Form 1099 and report your earnings to the IRS</li>
+            <li>Upon crossing the $600 threshold, you will be required to provide a valid Social Security Number (SSN) or Employer Identification Number (EIN) before further payouts may be processed</li>
+            <li>Failure to provide required tax information may result in a hold on your winnings until the information is received</li>
+            <li>You agree to provide accurate and complete tax information upon request and to notify us of any changes</li>
+          </ul>
+          <p>The Platform is not responsible for any tax liability you incur as a result of winnings. We recommend consulting a qualified tax professional regarding your individual obligations.</p>
+        </div>
+ 
+        <div class="clause" id="tos-conduct">
+          <h3>9. Prohibited Conduct</h3>
+          <p>You agree not to engage in any of the following, including but not limited to:</p>
+          <ul>
+            <li>Manually entering, editing, importing, or otherwise inputting step or health data by hand into Apple Health, Google Health Connect, or any other source rather than physically taking the steps. Only steps automatically recorded by your phone or a connected wearable device count toward challenges; manually entered steps are excluded and any attempt to submit them is considered an attempt to manipulate challenge results</li>
+            <li>Using any device, software, application, or method to artificially inflate your step count, including but not limited to step-counting machines, placing your device on animals or moving vehicles, shake devices, or any other manipulation of step or health data</li>
+            <li>Creating multiple accounts or participating under a false identity</li>
+            <li>Using another person's account or allowing another person to use yours</li>
+            <li>Submitting payment using a payment method you do not own or are not authorized to use</li>
+            <li>Attempting to exploit bugs, vulnerabilities, glitches, or technical malfunctions in the platform</li>
+            <li>Using automated means including bots, scripts, macros, or third-party tools to interact with the app in any way</li>
+            <li>Engaging in collusion, coordination, or any agreement with other participants to manipulate challenge outcomes or share winnings</li>
+            <li>Using the platform while physically located in an excluded jurisdiction, regardless of where your account was created</li>
+            <li>Engaging in any conduct that disrupts, damages, or impairs the platform or other users' experience</li>
+            <li>Impersonating any person or entity, or misrepresenting your identity or affiliation</li>
+          </ul>
+          <p>Violation of any of these prohibitions may result in immediate account termination, forfeiture of any wallet balance and pending winnings, removal from active challenges without refund, and potential civil or criminal legal action. Any user found to have cheated, falsified or manipulated step data, or otherwise violated these Terms may be permanently banned from the Platform; permanent bans are final, and a banned user is not entitled to reinstatement and may not create a new account. The Platform reserves the right to investigate suspicious activity, disqualify participants, and make final determinations regarding violations at its sole and absolute discretion. All such decisions are final and not subject to appeal.</p>
+          <p>The Platform reserves the right to request additional verification of your identity, activity, or step data at any time, including where we identify suspicious, irregular, or anomalous activity, and to withhold payouts or disqualify entries pending such verification. If we request such verification, we may also place a hold on any pending or requested withdrawal, and decline to process it, until our review or investigation is complete and we are satisfied that your activity complies with these Terms. We are not obligated to release a withheld payout or withdrawal while a review is ongoing, and a payout or withdrawal determined to be associated with prohibited conduct may be withheld in full.</p>
+        </div>
+ 
+        <div class="clause" id="tos-liability">
+          <h3>10. Disclaimers and Limitation of Liability</h3>
+          <p>The Platform is provided "as is" and "as available" without warranties of any kind, express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, accuracy, or non-infringement. We do not warrant that the app will be uninterrupted, error-free, secure, or free of harmful components. Use of the platform is entirely at your own risk.</p>
+          <p>To the maximum extent permitted by applicable law, the Platform and its operators, officers, employees, agents, successors, and assigns shall not be liable for any direct, indirect, incidental, special, consequential, exemplary, or punitive damages of any kind, including but not limited to loss of profits, loss of data, loss of goodwill, loss of winnings, personal injury, property damage, or any other intangible losses, arising from or related to your use of or inability to use the platform, regardless of the theory of liability (contract, tort, negligence, strict liability, or otherwise) and even if the Platform has been advised of the possibility of such damages.</p>
+          <p>Our total aggregate liability to you for any and all claims arising from or related to these terms or your use of the platform shall not exceed the total entry fees paid by you in the 90 days immediately preceding the claim giving rise to liability. This limitation applies to the fullest extent permitted by law.</p>
+          <p>Some jurisdictions do not allow the exclusion or limitation of certain warranties or damages. In such jurisdictions, the above limitations apply to the fullest extent permitted by applicable law.</p>
+        </div>
+ 
+        <div class="clause" id="tos-disputes">
+          <h3>11. Dispute Resolution and Waiver of Class Action</h3>
+          <p>PLEASE READ THIS SECTION CAREFULLY. IT AFFECTS YOUR LEGAL RIGHTS.</p>
+          <p>Any dispute, claim, or controversy of any kind arising out of or relating to these Terms, the Privacy Policy, the platform, or your use of any services provided through the Platform — including but not limited to disputes regarding formation, validity, enforceability, performance, breach, termination, or any other matter — shall be resolved exclusively by binding individual arbitration administered by the American Arbitration Association (AAA) under its Consumer Arbitration Rules, conducted in the State of Texas.</p>
+          <p><strong>Waiver of class action and representative claims:</strong> YOU AND THE PLATFORM EACH IRREVOCABLY WAIVE ANY RIGHT TO BRING OR PARTICIPATE IN ANY CLASS ACTION LAWSUIT, CLASS-WIDE ARBITRATION, PRIVATE ATTORNEY GENERAL ACTION, CONSOLIDATED ARBITRATION, OR ANY OTHER REPRESENTATIVE OR COLLECTIVE PROCEEDING OF ANY KIND AGAINST THE OTHER. All disputes must be brought in your individual capacity only. If a court or arbitrator finds that this class action waiver is unenforceable with respect to any claim, then the arbitration agreement shall not apply to that claim, and that claim shall proceed in court — but the waiver shall remain in full force for all other claims.</p>
+          <p>By agreeing to these Terms, you expressly waive your right to a jury trial and your right to participate in any class or representative action. This waiver is a material and non-severable condition of your use of the platform. If you do not agree to this waiver, you may not use the Platform.</p>
+        </div>
+ 
+        <div class="clause" id="tos-governing">
+          <h3>12. Governing Law</h3>
+          <p>These Terms of Service are governed by and construed in accordance with the laws of the State of Texas, without regard to conflict of law principles. Any legal proceedings not subject to arbitration shall be brought exclusively in the state or federal courts located in the State of Texas, and you irrevocably consent to personal jurisdiction and venue in such courts.</p>
+        </div>
+ 
+        <div class="clause" id="tos-termination">
+          <h3>13. Account Termination</h3>
+          <p>The Platform reserves the right to suspend, restrict, or permanently terminate your account at any time, with or without notice, for any reason, including but not limited to violation of these terms, suspicious or fraudulent activity, chargebacks, failure to provide required tax information, or any other reason necessary in our sole judgment to protect the platform and its users. Upon termination for any violation, any pending winnings, wallet balance, or other amounts owed to you may be forfeited in full. The Platform shall not be liable to you or any third party for any termination of your account.</p>
+        </div>
+ 
+        <div class="clause" id="tos-severability">
+          <h3>14. Severability</h3>
+          <p>If any provision of these Terms is found to be invalid, illegal, or unenforceable under applicable law, that provision shall be modified to the minimum extent necessary to make it enforceable, or severed if modification is not possible, without affecting the validity and enforceability of the remaining provisions.</p>
+        </div>
+ 
+        <div class="clause" id="tos-entire">
+          <h3>15. Entire Agreement</h3>
+          <p>These Terms of Service and the Privacy Policy constitute the entire agreement between you and the Platform with respect to your use of the platform and supersede all prior or contemporaneous agreements, representations, warranties, and understandings, whether written or oral, relating to the subject matter herein.</p>
+        </div>
+ 
+        <div class="clause" id="tos-changes">
+          <h3>16. Changes to Terms</h3>
+          <p>We reserve the right to modify these Terms at any time. Material changes will be communicated via push notification or email at least 14 days before taking effect. Continued use of the app after the effective date constitutes acceptance of the updated terms. If you do not agree to the updated terms, you must stop using the platform before the effective date.</p>
+        </div>
+ 
+      </article>
+    </section>
+ 
+    <div class="contact-block">
+      <h4>Questions about these documents?</h4>
+      <p>We're happy to clarify anything. Reach out to us directly.</p>
+      <a href="mailto:hello@moneystep.app">hello@moneystep.app</a>
+    </div>
+ 
+  </main>
+ 
+  <footer>
+    <p>© 2026 Moneystep · All rights reserved · <a href="#privacy">Privacy Policy</a> · <a href="#terms">Terms of Service</a></p>
+  </footer>
+ 
+</body>
+</html>

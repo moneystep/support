@@ -277,7 +277,8 @@
             <li>Account information: username, email address, phone number, and profile photo</li>
             <li>Financial information: transaction history, entry fees paid, winnings received, and wallet balance</li>
             <li>Step count data: daily step totals sourced from Apple HealthKit or Google Health Connect</li>
-            <li>Location data: your general location at the time of account creation for eligibility verification purposes only; this data is not stored beyond the verification check</li>
+            <!-- ADDED FOR JEFF REVIEW: expanded the location line to clarify that the app REQUESTS location permission to derive your state, but discards the underlying GPS coordinates. This reconciles a possible "requested permission vs. stored data" mismatch (a user/app-store reviewer sees a location permission prompt; the policy should explain why). Substance unchanged: only the derived state is stored. -->
+            <li>Location data: at the time of account creation, the app requests device location permission and reads your approximate location solely to determine the U.S. state you are in for eligibility verification. The underlying GPS coordinates are used only for this check and are discarded immediately; we retain only the resulting two-letter U.S. state associated with your account.</li>
             <li>Device information: device token for push notifications, operating system, and app version</li>
             <li>Usage data: challenge participation history, competition results, and in-app activity</li>
             <li>Payment and withdrawal information: when you request a payout, the full legal name and Zelle contact (phone number or email) you provide so we can send your winnings</li>
@@ -298,9 +299,13 @@
         <div class="clause" id="pp-third-party">
           <h3>3. Third-Party Services</h3>
           <p>The Platform uses the following third-party services to operate:</p>
+          <!-- ADDED FOR JEFF REVIEW: expanded this list to name the specific Google Firebase services actually in use (Auth, Firestore, Cloud Functions, Storage, Cloud Messaging, App Check) and to disclose Firebase Crashlytics (crash diagnostics + basic device telemetry) and App Check attestation (Apple App Attest / Google Play Integrity). This reflects the actual SDKs shipped in the app. The prior list only named Firebase generically and HealthKit/Health Connect. NOTE: Firebase Analytics is NOT enabled (verified in code) — the "no analytics SDKs" statement below remains accurate. -->
           <ul>
-            <li><strong>Google Firebase</strong> — backend infrastructure, database, authentication, and push notifications. Data is stored on Firebase servers subject to Google's privacy policies.</li>
+            <li><strong>Google Firebase</strong> — backend infrastructure used for our database (Cloud Firestore), user authentication (Firebase Authentication), server logic (Cloud Functions), file storage (Cloud Storage, e.g. profile photos), and push notifications (Firebase Cloud Messaging). Data is stored on Firebase servers subject to Google's privacy policies.</li>
+            <li><strong>Firebase Crashlytics</strong> — crash and stability diagnostics. When the app crashes, Crashlytics collects diagnostic information including your device model, operating system version, and app version to help us identify and fix problems. This data is processed by Google.</li>
+            <li><strong>App Check (Apple App Attest / Google Play Integrity)</strong> — device attestation used to verify that requests to our backend come from a genuine, unmodified copy of the app, to protect against abuse and fraud. This involves device-integrity tokens processed by Apple and Google.</li>
             <li><strong>Apple HealthKit / Google Health Connect</strong> — read-only access to step count data on your device.</li>
+            <li><strong>Email delivery</strong> — we use a Google Workspace email service to send you transactional messages (such as account notices and withdrawal confirmations). Delivering these emails involves processing your email address.</li>
           </ul>
           <p>We do not integrate advertising networks, analytics SDKs that track behavior across apps, or any other third-party data brokers.</p>
         </div>
@@ -328,7 +333,10 @@
         <div class="clause" id="pp-retention">
           <h3>6. Data Retention &amp; Deletion</h3>
           <p>You may request deletion of your account and associated data at any time through the app's account settings or by contacting us at hello@moneystep.app. To delete your account, you must first have no active challenge, no pending challenge settlement, and a zero wallet balance — withdraw any remaining funds before requesting deletion. We will process eligible deletion requests within 30 days.</p>
+          <!-- ADDED FOR JEFF REVIEW: the original paragraph below (retained records) is preserved. Two additions follow it: (a) an explicit acknowledgment that certain operational/administrative records — including notification and withdrawal-related email records that may contain your email address, and internal fraud/anomaly review records that may contain your username and email — can persist after deletion; and (b) a backup-retention clause. NOTE: as of now, Firestore point-in-time recovery and scheduled backups are NOT enabled, so no backup copies currently persist; the clause is written to remain accurate if backups are enabled in the future. Jeff to confirm wording. -->
           <p>Certain records are retained even after account deletion, to the extent permitted or required by law and for legitimate business, tax, and fraud-prevention purposes. These may include financial and transaction records, payout and withdrawal records (including the name and payment contact you provided), tax-related earnings records, completed challenge results, and records of suspicious or anomalous activity. We retain these only as long as reasonably necessary for those purposes.</p>
+          <p>We may also retain certain operational and administrative records after account deletion, including records of notifications and emails sent to you (which may contain your email address) and internal records relating to fraud prevention, competition integrity, or verification reviews (which may contain your username and email address). These are retained only as long as reasonably necessary for the purposes described above.</p>
+          <p>In addition, if we maintain routine backups of our systems, residual copies of your data may persist in those secure backups for a limited period after deletion and are overwritten or purged on our standard backup-retention cycle. Backups are maintained solely for disaster-recovery and data-integrity purposes and are not used to reconstitute deleted accounts.</p>
         </div>
  
         <div class="clause" id="pp-children">

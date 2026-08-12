@@ -79,7 +79,7 @@
   </style>
 </head>
 <body>
- 
+
   <nav>
     <div class="nav-inner">
       <span class="wordmark">Moneystep</span>
@@ -89,19 +89,19 @@
       </ul>
     </div>
   </nav>
- 
+
   <div class="hero">
     <span class="hero-label">Legal Documents</span>
     <h1>Privacy &amp; Terms</h1>
-    <p>These documents govern your use of Moneystep (the &ldquo;Platform&rdquo;). Please read them carefully before using the app.</p>
+    <p>These documents govern your use of the App and related services provided by Moneystep LLC (&ldquo;we,&rdquo; &ldquo;us,&rdquo; &ldquo;our,&rdquo; or the &ldquo;Platform&rdquo;). The Platform operates the Moneystep mobile application and related services (the &ldquo;App&rdquo;).</p>
     <div class="hero-meta">
       <div class="meta-item">
         <span class="meta-label">Effective Date</span>
-        <span class="meta-value">June 6, 2026</span>
+        <span class="meta-value">August 12, 2026</span>
       </div>
       <div class="meta-item">
         <span class="meta-label">Operator</span>
-        <span class="meta-value">Moneystep</span>
+        <span class="meta-value">Moneystep LLC</span>
       </div>
       <div class="meta-item">
         <span class="meta-label">Governing Law</span>
@@ -113,7 +113,7 @@
       </div>
     </div>
   </div>
- 
+
   <div class="toc-wrapper">
     <div class="toc-doc-label">Privacy Policy</div>
     <div class="toc-grid">
@@ -150,7 +150,7 @@
         <div class="toc-text"><span class="toc-section">Privacy</span><span class="toc-title">Changes to This Policy</span></div>
       </a>
     </div>
- 
+
     <div class="toc-doc-label">Terms of Service</div>
     <div class="toc-grid">
       <a class="toc-card" href="#tos-agreement">
@@ -259,9 +259,9 @@
       </a>
     </div>
   </div>
- 
+
   <main>
- 
+
     <!-- PRIVACY POLICY -->
     <section class="doc-section" id="privacy">
       <div class="section-header">
@@ -269,7 +269,7 @@
         <h2>How We Handle Your Data</h2>
       </div>
       <article>
- 
+
         <div class="clause" id="pp-data">
           <h3>1. Data We Collect</h3>
           <p>When you create an account and use the Platform, we collect the following information:</p>
@@ -277,39 +277,38 @@
             <li>Account information: username, email address, phone number, and profile photo</li>
             <li>Financial information: transaction history, entry fees paid, winnings received, and wallet balance</li>
             <li>Step count data: daily step totals sourced from Apple HealthKit or Google Health Connect</li>
-            <!-- ADDED FOR JEFF REVIEW: expanded the location line to clarify that the app REQUESTS location permission to derive your state, but discards the underlying GPS coordinates. This reconciles a possible "requested permission vs. stored data" mismatch (a user/app-store reviewer sees a location permission prompt; the policy should explain why). Substance unchanged: only the derived state is stored. -->
-            <li>Location data: at the time of account creation, the app requests device location permission and reads your approximate location solely to determine the U.S. state you are in for eligibility verification. The underlying GPS coordinates are used only for this check and are discarded immediately; we retain only the resulting two-letter U.S. state associated with your account.</li>
+            <li>Location data: at the time of account creation, the App requests device location permission and reads your GPS location solely to determine the U.S. state you are in for eligibility verification. The underlying GPS coordinates are used only for this check and are discarded immediately; we retain only the resulting two-letter U.S. state associated with your account.</li>
             <li>Device information: device token for push notifications, operating system, and app version</li>
             <li>Usage data: challenge participation history, competition results, and in-app activity</li>
             <li>Payment and withdrawal information: when you request a payout, the full legal name and Zelle contact (phone number or email) you provide so we can send your winnings</li>
+            <li>Tax information: when your cumulative winnings reach the reporting threshold described in the Terms of Service, we collect the Social Security Number (SSN) or Employer Identification Number (EIN) required to issue a Form 1099 and process further payouts</li>
             <li>Fraud-prevention data: records relating to suspicious, irregular, or anomalous activity, including flagged step totals and related details, retained to protect the integrity of competitions</li>
           </ul>
         </div>
- 
+
         <div class="clause" id="pp-health">
           <h3>2. Health &amp; Step Data</h3>
-          <p>The Platform accesses your step count data from Apple HealthKit (iOS) or Google Health Connect (Android) for the sole purpose of tracking your performance in challenges.</p>
+          <p>The App accesses your step count data from Apple HealthKit (iOS) or Google Health Connect (Android) for the purposes of tracking your performance in challenges, calculating rank tier, and detecting manipulation of step data.</p>
           <div class="callout">
             <p><strong>Step data retention:</strong> We store your detailed daily step data for up to 90 days to support challenges of varying lengths. Daily step data older than 90 days is automatically deleted from our servers on a rolling basis. We access historical step data from your health app to calculate your rank tier but do not store the underlying records beyond this window. Aggregated or derived figures — such as your rolling step average, cumulative challenge step totals, and your final step count in a completed challenge — are kept as part of your profile and competition records and may be retained longer.</p>
           </div>
-          <p>We do not use your health data for advertising, sell it to third parties, or share it with any entity outside of the Platform for any purpose other than operating the app.</p>
+          <p>We do not use your health data for advertising, sell it to third parties, or share it with any entity outside of the Platform for any purpose other than operating the App.</p>
           <p>You may revoke HealthKit or Health Connect permissions at any time through your device settings. Revoking access will prevent step tracking from functioning and may affect your ability to participate in challenges.</p>
         </div>
- 
+
         <div class="clause" id="pp-third-party">
           <h3>3. Third-Party Services</h3>
           <p>The Platform uses the following third-party services to operate:</p>
-          <!-- ADDED FOR JEFF REVIEW: expanded this list to name the specific Google Firebase services actually in use (Auth, Firestore, Cloud Functions, Storage, Cloud Messaging, App Check) and to disclose Firebase Crashlytics (crash diagnostics + basic device telemetry) and App Check attestation (Apple App Attest / Google Play Integrity). This reflects the actual SDKs shipped in the app. The prior list only named Firebase generically and HealthKit/Health Connect. NOTE: Firebase Analytics is NOT enabled (verified in code) — the "no analytics SDKs" statement below remains accurate. -->
           <ul>
             <li><strong>Google Firebase</strong> — backend infrastructure used for our database (Cloud Firestore), user authentication (Firebase Authentication), server logic (Cloud Functions), file storage (Cloud Storage, e.g. profile photos), and push notifications (Firebase Cloud Messaging). Data is stored on Firebase servers subject to Google's privacy policies.</li>
-            <li><strong>Firebase Crashlytics</strong> — crash and stability diagnostics. When the app crashes, Crashlytics collects diagnostic information including your device model, operating system version, and app version to help us identify and fix problems. This data is processed by Google.</li>
-            <li><strong>App Check (Apple App Attest / Google Play Integrity)</strong> — device attestation used to verify that requests to our backend come from a genuine, unmodified copy of the app, to protect against abuse and fraud. This involves device-integrity tokens processed by Apple and Google.</li>
+            <li><strong>Firebase Crashlytics</strong> — crash and stability diagnostics. When the App crashes, Crashlytics collects diagnostic information including your device model, operating system version, and app version to help us identify and fix problems. This data is processed by Google.</li>
+            <li><strong>App Check (Apple App Attest / Google Play Integrity)</strong> — device attestation used to verify that requests to our backend come from a genuine, unmodified copy of the App, to protect against abuse and fraud. This involves device-integrity tokens processed by Apple and Google.</li>
             <li><strong>Apple HealthKit / Google Health Connect</strong> — read-only access to step count data on your device.</li>
             <li><strong>Email delivery</strong> — we use a Google Workspace email service to send you transactional messages (such as account notices and withdrawal confirmations). Delivering these emails involves processing your email address.</li>
           </ul>
           <p>We do not integrate advertising networks, analytics SDKs that track behavior across apps, or any other third-party data brokers.</p>
         </div>
- 
+
         <div class="clause" id="pp-sharing">
           <h3>4. Data Sharing &amp; Sale</h3>
           <p>The Platform does not sell, rent, or trade your personal data to any third party under any circumstances.</p>
@@ -321,39 +320,42 @@
             <li>In connection with a merger, acquisition, or sale of all or substantially all assets of the Platform, in which case users will be notified</li>
           </ul>
           <div class="callout">
-            <p><strong>Information visible to other users:</strong> Moneystep is a social, competitive platform. To operate leaderboards, public profiles, and friend features, certain information is visible to other users — including your username, profile photo, rank tier, step averages, finishing places, career statistics (such as total winnings, entry fees paid, and net earnings), and the U.S. state associated with your account. Do not put anything in your username or profile photo that you would not want other users to see.</p>
+            <p><strong>Information visible to any user:</strong> your username, your placement if you appear in the top 100 of a global leaderboard, and any global leaderboard badge you hold. Usernames and global leaderboard badges also appear on challenge leaderboards.</p>
           </div>
+          <div class="callout">
+            <p><strong>Information visible to your friends:</strong> users you have accepted as friends can see your profile photo and your Stats screen information, including your rank tier, step averages, finishing places, and career statistics shown in the Stats screen.</p>
+          </div>
+          <p>Do not put anything in your username or profile photo that you would not want other users to see.</p>
         </div>
- 
+
         <div class="clause" id="pp-security">
           <h3>5. Data Security</h3>
           <p>We use industry-standard security practices including encrypted data transmission (TLS) and Firebase security rules restricting data access to authenticated users. No method of electronic storage is 100% secure. We cannot guarantee absolute security but are committed to protecting your information.</p>
         </div>
- 
+
         <div class="clause" id="pp-retention">
           <h3>6. Data Retention &amp; Deletion</h3>
-          <p>You may request deletion of your account and associated data at any time through the app's account settings or by contacting us at hello@moneystep.app. To delete your account, you must first have no active challenge, no pending challenge settlement, and a zero wallet balance — withdraw any remaining funds before requesting deletion. We will process eligible deletion requests within 30 days.</p>
-          <!-- ADDED FOR JEFF REVIEW: the original paragraph below (retained records) is preserved. Two additions follow it: (a) an explicit acknowledgment that certain operational/administrative records — including notification and withdrawal-related email records that may contain your email address, and internal fraud/anomaly review records that may contain your username and email — can persist after deletion; and (b) a backup-retention clause. NOTE: as of now, Firestore point-in-time recovery and scheduled backups are NOT enabled, so no backup copies currently persist; the clause is written to remain accurate if backups are enabled in the future. Jeff to confirm wording. -->
+          <p>You may delete your account and associated data at any time through the App's Settings. If you are unable to use in-app deletion, you may submit a request to hello@moneystep.app. To delete your account, you must first have no active challenge, no pending challenge settlement, a zero wallet balance, and no pending withdrawal request. We will process eligible deletion requests within 30 days.</p>
           <p>Certain records are retained even after account deletion, to the extent permitted or required by law and for legitimate business, tax, and fraud-prevention purposes. These may include financial and transaction records, payout and withdrawal records (including the name and payment contact you provided), tax-related earnings records, completed challenge results, and records of suspicious or anomalous activity. We retain these only as long as reasonably necessary for those purposes.</p>
           <p>We may also retain certain operational and administrative records after account deletion, including records of notifications and emails sent to you (which may contain your email address) and internal records relating to fraud prevention, competition integrity, or verification reviews (which may contain your username and email address). These are retained only as long as reasonably necessary for the purposes described above.</p>
           <p>In addition, if we maintain routine backups of our systems, residual copies of your data may persist in those secure backups for a limited period after deletion and are overwritten or purged on our standard backup-retention cycle. Backups are maintained solely for disaster-recovery and data-integrity purposes and are not used to reconstitute deleted accounts.</p>
         </div>
- 
+
         <div class="clause" id="pp-children">
           <h3>7. Children's Privacy</h3>
-          <p>The Platform is strictly for users aged 18 and older. We do not knowingly collect personal information from anyone under 18. If we become aware that a minor has created an account, we will terminate the account and delete all associated data immediately.</p>
+          <p>The Platform is strictly for users aged 18 and older. We do not knowingly collect personal information from anyone under 18. If we become aware that a minor has created an account, we will terminate the account and delete the associated personal data, subject only to records we are required to retain by law.</p>
         </div>
- 
+
         <div class="clause" id="pp-changes">
           <h3>8. Changes to This Policy</h3>
-          <p>We may update this Privacy Policy from time to time. We will notify users of material changes via push notification or email. Continued use of the app after changes take effect constitutes acceptance of the updated policy. The effective date at the top of this page will reflect the most recent revision.</p>
+          <p>We may update this Privacy Policy from time to time. We will notify users of material changes via push notification or email. Continued use of the App after changes take effect constitutes acceptance of the updated policy. The effective date at the top of this page will reflect the most recent revision.</p>
         </div>
- 
+
       </article>
     </section>
- 
+
     <hr class="doc-divider" />
- 
+
     <!-- TERMS OF SERVICE -->
     <section class="doc-section" id="terms">
       <div class="section-header">
@@ -361,59 +363,67 @@
         <h2>Rules of the Platform</h2>
       </div>
       <article>
- 
+
         <div class="clause" id="tos-agreement">
           <h3>1. Agreement</h3>
-          <p>By creating an account, downloading, installing, or using the Platform, you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree to these terms, do not use the app. These terms constitute a legally binding agreement between you and the Platform. Your continued use of the app constitutes your ongoing acceptance of these terms as they may be updated from time to time.</p>
+          <p>By creating an account, downloading, installing, or using the App, you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree to these terms, do not use the App. These terms constitute a legally binding agreement between you and the Platform. Your continued use of the App constitutes your ongoing acceptance of these terms as they may be updated from time to time.</p>
+          <p>It is your responsibility to read and understand these Terms of Service, the Privacy Policy, and all relevant instructions, notices, and information provided within the App before and during your use of the Platform. By using the Platform you represent that you have done so.</p>
         </div>
- 
+
         <div class="clause" id="tos-eligibility">
           <h3>2. Eligibility</h3>
           <p>To use the Platform you must:</p>
           <ul>
             <li>Be at least 18 years of age</li>
-            <li>Be a resident of the United States physically located in an eligible state at the time of account creation and at the time of each challenge enrollment</li>
-            <li>Physically take all steps counted toward any challenge while located within an eligible state; steps taken while in an excluded jurisdiction do not count toward challenge results regardless of where your account was created</li>
+            <li>Be a resident of the United States and physically located in an eligible state at the time of account creation, at the time of each challenge enrollment, and while taking any steps counted toward a challenge</li>
+            <li>The Platform verifies your location at account creation. It remains your sole responsibility to ensure your participation is lawful in your current jurisdiction at all times. The Platform reserves the right to verify your location at any time, to disqualify entries, and to withhold payouts where participation is determined to violate applicable law</li>
             <li>Not be prohibited from participating in skill-based competitions by any applicable law or regulation in your current jurisdiction</li>
+            <li>You may participate in only one active challenge at a time</li>
           </ul>
           <div class="callout">
-            <p><strong>Employees and owners:</strong> Employees, owners, and operators of the Platform may participate in challenges, but are not eligible to win or receive any cash prize, payout, or winnings of any kind. For payout purposes they are treated as if they were not in the standings: any prize position they would have occupied passes to the next eligible participant, so every eligible participant below them moves up accordingly.</p>
+            <p><strong>Employees and owners:</strong> Employees, owners, operators, officers, agents, and contractors of the Platform may participate in challenges, but are not eligible to win or receive any cash prize, payout, or winnings of any kind. For payout purposes they are treated as if they were not in the standings: any prize position they would have occupied passes to the next eligible participant, so every eligible participant below them moves up accordingly.</p>
           </div>
           <div class="callout">
-            <p><strong>Step history requirement:</strong> To enroll in a challenge, your account must have a history of recorded step data over the preceding 28 days. This requirement helps ensure that your step source is active and reliably recording before you compete. Manually entered step data does not count toward this requirement. If your account does not meet the step history requirement, you will not be able to enroll until sufficient recorded step data is present. The Platform may adjust the parameters of this requirement at any time and at its sole discretion.</p>
+            <p><strong>Step history requirement:</strong> To enroll in a challenge, your account must have a history of recorded step data over the preceding 4 weeks. This requirement helps ensure that your step source is active and reliably recording before you compete. Manually entered step data does not count toward this requirement. If your account does not meet the step history requirement, you will not be able to enroll until sufficient recorded step data is present. The Platform may adjust the parameters of this requirement at any time and at its sole discretion.</p>
+          </div>
+          <div class="callout">
+            <p><strong>Rank requirement:</strong> The Platform assigns each account a rank tier based on your trailing four-week average weekly step count, recalculated periodically. You may enroll only in challenges at or above your assigned rank. A change in your rank during a challenge does not affect that challenge.</p>
           </div>
           <div class="callout">
             <p><strong>Excluded states:</strong> The Platform is not available to users physically located in Arizona (AZ), Hawaii (HI), Idaho (ID), Montana (MT), Oregon (OR), Washington (WA), or Louisiana (LA) at the time of account creation or challenge enrollment. It is your sole responsibility to ensure that your participation is lawful in your current jurisdiction at all times. The Platform reserves the right to disqualify entries and withhold payouts where participation is determined to be in violation of applicable law.</p>
           </div>
           <p>You may maintain only one account per person. If the Platform discovers that you have opened more than one account, we reserve the right to suspend or terminate any or all of your accounts and forfeit any associated winnings or wallet balance.</p>
         </div>
- 
+
         <div class="clause" id="tos-account-security">
           <h3>3. Account Security</h3>
           <p>You are responsible for maintaining the confidentiality of your account credentials and for all activity that occurs under your account. You agree to provide accurate, current, and complete information when you create your account and to keep that information updated. You must notify us immediately at hello@moneystep.app if you believe your account has been accessed or used without your authorization. The Platform is not liable for any loss arising from unauthorized use of your account. You may not share your account with, or use the account of, any other person.</p>
         </div>
- 
+
         <div class="clause" id="tos-skill">
           <h3>4. Skill-Based Competition</h3>
-          <p>The Platform is a skill-based competition platform. Challenge outcomes are determined entirely by step count performance, which reflects physical effort, fitness level, and activity — and not by chance, luck, or any random element.</p>
+          <p>The Platform operates skill-based competitions. Challenge outcomes are determined entirely by step count performance, which reflects physical effort, fitness level, and activity — and not by chance, luck, or any random element.</p>
           <p>The Platform is not a game of chance and is not gambling. Winning depends solely on the number of steps a participant physically takes, which is an action wholly within each participant's own control and influence. The Platform does not reward participants for any outcome determined by chance. Any attempt to win based on anything other than steps you physically take — including any manipulation of step or health data — is strictly prohibited and is grounds for disqualification and forfeiture.</p>
           <p>By participating, you acknowledge that results are based on skill and physical effort, that no outcome is guaranteed, and that the Platform makes no representations regarding your likelihood of winning any challenge.</p>
         </div>
- 
+
         <div class="clause" id="tos-fees">
           <h3>5. Entry Fees, Payment, and Refunds</h3>
           <div class="callout">
-            <p><strong>How payment works:</strong> When you enroll in a paid challenge, you will be shown payment instructions. Entry fees are collected manually via Zelle prior to the challenge start. You must submit payment using the instructions provided and include your username in the memo. Enrollment in the app does not guarantee your spot — your entry is only confirmed once payment is received and verified by the Platform.</p>
+            <p><strong>How payment works:</strong> When you enroll in a paid challenge, you will be shown payment instructions. Entry fees are collected manually via Zelle prior to the challenge start. You must submit payment using the instructions provided and include your username in the memo. Enrollment in the App does not guarantee your spot — your entry is only confirmed once payment is received and verified by the Platform.</p>
           </div>
           <p><strong>Payment verification:</strong> The Platform reserves the right to remove any enrolled user who has not submitted verifiable payment prior to the challenge start. Removed users will be notified and will not be eligible to participate in that challenge.</p>
           <div class="callout">
             <p><strong>No refunds, ever:</strong> All entry fees are final and non-refundable. Once you have paid an entry fee, it will not be returned under any circumstances — including but not limited to voluntary exit (whether before or after the challenge begins), injury, illness, device malfunction, loss of connectivity, step sync failure, removal for prohibited conduct, or dissatisfaction with results. The only exception is a challenge cancelled by the Platform before it starts, as described below.</p>
           </div>
           <p><strong>Cancelled challenges:</strong> If a challenge is cancelled by the Platform prior to its start due to insufficient participation or any other reason, entry fees already received will be refunded in full. This is the only circumstance in which a refund will be issued.</p>
-          <p><strong>Prize payouts:</strong> For paid challenges, a platform fee may be deducted from the prize pool before payouts are distributed, where applicable. How prizes are determined depends on the challenge: for some challenges the prize amounts are set in advance, while for others they are calculated from the total number of entrants after enrollment closes and remain estimates until the challenge is settled, including because tie outcomes can affect final amounts. Payouts are credited to your in-app wallet upon challenge settlement, and you may request a withdrawal from the Payments &amp; Wallet section of the app. Withdrawals are paid via Zelle, and you will be asked to provide your Zelle information when you request one.</p>
+          <p><strong>Prize payouts:</strong> Prize amounts may be funded and paid by the Platform or sponsors. For some challenges the Platform retains a service fee in determining the prize amounts it will award; for others no service fee applies. How prizes are determined depends on the challenge: for some challenges the prize amounts are set in advance, while for others they are calculated from the total number of entrants after enrollment closes and remain estimates until the challenge is settled, including because tie outcomes can affect final amounts. Payouts are credited to your in-app wallet upon challenge settlement, and you may request a withdrawal from the Payments &amp; Wallet section of the App's settings. Withdrawals are paid via Zelle, and you will be asked to provide your Zelle information when you request one.</p>
+          <p><strong>Ties.</strong> If two or more entrants tie for a cash-winning placement, they split the combined payouts of the placements occupied by the tied entrants. For example, if three entrants tie for 4th place in a challenge with ten cash-winning places, those three split the combined 4th, 5th, and 6th place payouts, and the entrant with the next-highest step count receives the 7th place payout. If entrants tie for the final cash-winning place, they split that single payout.</p>
+          <p><strong>Using your wallet balance.</strong> Winnings credited to your in-app wallet may be applied to the entry fee for a future challenge instead of being withdrawn. You may not deposit funds into your wallet; wallet balances are funded only by winnings. An entry fee paid from your wallet balance is subject to the same non-refundable terms as any other entry fee.</p>
+          <p><strong>Free challenges.</strong> Some challenges may have no entry fee and still award cash prizes. Free challenges are governed by these Terms in the same way as paid challenges, except that the entry-fee, payment, and refund provisions do not apply.</p>
           <p><strong>Accurate withdrawal information is your responsibility:</strong> You are solely responsible for providing accurate and complete payment information when requesting a withdrawal, including your full name and correct Zelle phone number or email. If you provide incorrect, incomplete, or invalid payment information, your payout may be sent to the wrong recipient or fail to process, and the Platform is not responsible for funds lost as a result. We will not issue a replacement payout, refund, or reimbursement of any kind for payouts misdirected or lost due to information you provided. It is your responsibility to verify your payment details are correct before submitting a withdrawal request.</p>
         </div>
- 
+
         <div class="clause" id="tos-exit">
           <h3>6. Exiting a Challenge</h3>
           <p>You may voluntarily exit a challenge at any time before or after it begins. The following rules apply:</p>
@@ -423,23 +433,25 @@
           </ul>
           <p>Exits are recorded in your career statistics. Exiting mid-challenge counts as a last-place finish for statistical purposes.</p>
         </div>
- 
+
         <div class="clause" id="tos-sync">
           <h3>7. Step Data Sync Requirements</h3>
           <p>To ensure accurate leaderboard standings and final results, users are responsible for the following:</p>
           <ul>
-            <li><strong>A connected step source is required.</strong> The Platform reads your step data from Apple Health (iOS) or Google Health Connect (Android). You are responsible for ensuring a step source is actively recording steps into your health app and that Moneystep has been granted permission to read it. On Android in particular, Health Connect does not record steps on its own — it only stores step data provided by another app, such as your phone's health app or a connected wearable. If no step source is feeding your health app, or if permission is not granted, your steps will register as zero regardless of your physical activity. It is your sole responsibility to confirm your steps are being recorded before and during a challenge.</li>
-            <li><strong>You must choose a single step source, and only that source counts.</strong> Before enrolling, you are required to select one step source for the Platform to count from. Only steps recorded by the source you select will be counted toward your challenge results — steps from any other app, device, or source will not be included. The source you select is locked to your entry at the time you enroll and cannot be changed for the duration of that challenge. It is your responsibility to choose the source that accurately reflects the steps you physically take and to keep that source recording throughout the challenge. If your selected source stops recording or syncing, your step total may stop advancing, and the most recently synced total will be used. Manually entered steps are never counted, regardless of source.</li>
-            <li><strong>Keep your apps synced during a challenge.</strong> During an active challenge, make sure your steps and any connected health or fitness apps (such as your wearable's companion app, for example Garmin Connect) are synced and up to date, and open Moneystep at least once per calendar day. The Platform reads your step data from Apple Health or Google Health Connect when you open the app, and those services only contain your latest steps if your phone and any connected apps have synced.</li>
-            <li><strong>Post-challenge sync window.</strong> After a challenge has ended, make sure your steps and any connected health or fitness apps are synced and up to date, and open Moneystep within 24 hours of the challenge end time, so your complete step data is captured before results are finalized.</li>
+            <li><strong>A connected step source is required.</strong> The App reads your step data from Apple Health (iOS) or Google Health Connect (Android). You are responsible for ensuring a step source is actively recording steps into your health app and that the App has been granted permission to read it. On Android in particular, Health Connect does not record steps on its own — it only stores step data provided by another app, or a connected wearable. If no step source is feeding your health app, or if permission is not granted, your steps will register as zero regardless of your physical activity. It is your sole responsibility to confirm your steps are being recorded before and during a challenge.</li>
+            <li><strong>A single step source is used, and only that source counts.</strong> Before enrolling, one step source is set for your account — by default Apple Health on iOS or Garmin on Android, if you have a Garmin device connected — and you may change it in Settings at any time before you enroll. Only steps recorded by that source will be counted toward your challenge results — steps from any other app, device, or source will not be included. The source you select is locked to your entry at the time you enroll and cannot be changed for the duration of that challenge. It is your responsibility to choose the source that accurately reflects the steps you physically take and to keep that source recording throughout the challenge. If your selected source stops recording or syncing, your step total may stop advancing, and the most recently synced total will be used. Manually entered steps are never counted, regardless of source. On iOS, eligible sources are Apple Health (covering your iPhone's built-in step counter and Apple Watch) and Garmin. On Android, Garmin is currently the only eligible source — if you use an Android device without a connected Garmin, no eligible step source is available to you and you will not be able to accumulate countable steps. Eligible sources may change as devices and platforms change.</li>
+            <li><strong>Keep your apps synced during a challenge.</strong> During an active challenge, make sure your steps and any connected health or fitness apps (such as your wearable's companion app, for example Garmin Connect) are synced and up to date, and open the App at least once per calendar day. The App reads your step data from Apple Health or Google Health Connect when you open the App, and those services only contain your latest steps if your phone and any connected apps have synced.</li>
+            <li><strong>Post-challenge sync window.</strong> After a challenge has ended, make sure your steps and any connected health or fitness apps are synced and up to date, and open the App within 24 hours of the challenge end time, so your complete step data is captured before results are finalized.</li>
             <li><strong>Settlement timing.</strong> Challenge results are finalized approximately 24 hours after the challenge end time. Step data not synced by settlement will not be included in your final result.</li>
             <li><strong>Incomplete sync liability.</strong> If you fail to sync within the 24-hour post-challenge window, your recorded step count at the time of settlement will be used as your final total. The Platform is not responsible for any difference between your actual steps and your synced step count.</li>
-            <li><strong>Syncing depends on your apps and on opening Moneystep.</strong> The Platform syncs your steps when you open Moneystep, and it can only read steps that your phone and connected apps have already synced into Apple Health or Google Health Connect. The Platform does not perform reliable automatic syncing while the app is closed or in the background, and you should not rely on background syncing for any reason. Keeping your health and fitness apps synced and up to date, and opening Moneystep to sync — including within the post-challenge window described above — is your responsibility.</li>
-            <li><strong>Android battery optimization.</strong> Some Android device manufacturers (including but not limited to Samsung, Xiaomi, Huawei, and OnePlus) apply aggressive battery saving features that may prevent Moneystep from receiving background notifications. If you use one of these devices, we recommend exempting Moneystep from battery optimization in your device settings. You can typically find this setting under Battery &rarr; App optimization or Battery &rarr; Background usage limits. The Platform is not responsible for missed notifications or incomplete step data resulting from manufacturer battery optimization settings.</li>
+            <li><strong>Syncing depends on your apps and on opening our App.</strong> The App syncs your steps when you open it, and it can only read steps that your phone and connected apps have already synced into Apple Health or Google Health Connect. The App does not perform reliable automatic syncing while it is closed or in the background, and you should not rely on background syncing for any reason. Keeping your health and fitness apps synced and up to date, and opening the App to sync — including within the post-challenge window described above — is your responsibility.</li>
+            <li><strong>Android battery optimization.</strong> Some Android device manufacturers (including but not limited to Samsung, Xiaomi, Huawei, and OnePlus) apply aggressive battery saving features that may prevent the App from receiving background notifications. If you use one of these devices, we recommend exempting the App from battery optimization in your device settings. You can typically find this setting under Battery &rarr; App optimization or Battery &rarr; Background usage limits. The Platform is not responsible for missed notifications or incomplete step data resulting from manufacturer battery optimization settings.</li>
             <li><strong>No liability for device or connectivity issues.</strong> The Platform is not responsible for incomplete, missing, or delayed step data resulting from device settings, device failures, manufacturer restrictions, network outages, or failure to sync within required timeframes.</li>
+            <li><strong>If you never open the App, your steps cannot be recorded.</strong> If you do not open the App at all during a challenge and also do not open it within 24 hours after the challenge ends, no step data can be captured for that challenge. In that case your steps cannot be recorded and your final total for the challenge will be zero (0), regardless of how many steps you physically took.</li>
+            <li><strong>Disputing your final result.</strong> It is your responsibility to raise any dispute about your own result in a settled challenge in time. If you believe your final step count or placement is incorrect — for example, steps you physically took were not counted — you must notify us at hello@moneystep.app within 24 hours after that challenge is settled (approximately 48 hours after the challenge's end time). Your notice must identify the challenge and describe the claimed error. After that 24-hour window, your final result is deemed accepted and final as to you and is no longer subject to dispute or adjustment on your request. Whether and how to act on any notice is within the Platform's sole discretion, and nothing in this section obligates the Platform to change any result or to act within any particular timeframe.</li>
           </ul>
         </div>
- 
+
         <div class="clause" id="tos-health">
           <h3>8. Health, Safety, and Assumption of Risk</h3>
           <div class="callout">
@@ -452,9 +464,9 @@
             <li>The Platform is not responsible for any injury, illness, death, disability, or adverse health outcome of any kind arising from or related to your participation, including but not limited to overexertion, cardiovascular events, musculoskeletal injuries, or accidents occurring while walking or running</li>
             <li>You hereby release, waive, discharge, and covenant not to sue the Platform and its operators, officers, employees, agents, successors, and assigns from any and all claims, demands, damages, causes of action, or liabilities of any kind arising from physical activity undertaken in connection with the Platform, whether caused by negligence or otherwise</li>
           </ul>
-          <p>Moneystep is a fitness and step-count competition app. It is not a medical device and does not provide medical advice, diagnosis, or treatment. Consult a qualified healthcare provider for any medical concerns.</p>
+          <p>The App is a fitness and step-count competition app. It is not a medical device and does not provide medical advice, diagnosis, or treatment. Consult a qualified healthcare provider for any medical concerns.</p>
         </div>
- 
+
         <div class="clause" id="tos-tax">
           <h3>9. Tax Obligations and 1099 Reporting</h3>
           <p>You are solely responsible for all taxes arising from prizes and winnings earned through the Platform. In accordance with United States tax law:</p>
@@ -466,134 +478,135 @@
           </ul>
           <p>The Platform is not responsible for any tax liability you incur as a result of winnings. We recommend consulting a qualified tax professional regarding your individual obligations.</p>
         </div>
- 
+
         <div class="clause" id="tos-user-content">
           <h3>10. User Content</h3>
-          <p>The Platform allows you to provide a username and a profile photo (together, "User Content") that other users can see. You are solely responsible for your User Content. You represent and warrant that you own or have all necessary rights to any User Content you provide and that it does not infringe or violate the rights of any third party. You may not use a username or profile photo that is unlawful, infringing, obscene, sexually explicit, harassing, hateful, that impersonates another person, or that the Platform otherwise deems objectionable. By providing User Content, you grant the Platform a non-exclusive, worldwide, royalty-free license to store, display, and use that content for the purpose of operating the Platform. The Platform reserves the right, but is not obligated, to review, refuse, or remove any User Content at any time, for any reason, in its sole discretion.</p>
+          <p>The Platform allows you to provide a username and a profile photo (together, &ldquo;User Content&rdquo;) that other users can see. You are solely responsible for your User Content. You represent and warrant that you own or have all necessary rights to any User Content you provide and that it does not infringe or violate the rights of any third party. You may not use a username or profile photo that is unlawful, infringing, obscene, sexually explicit, harassing, hateful, that impersonates another person, or that the Platform otherwise deems objectionable. By providing User Content, you grant the Platform a non-exclusive, worldwide, royalty-free license to store, display, and use that content for the purpose of operating the Platform. The Platform reserves the right, but is not obligated, to review, refuse, or remove any User Content at any time, for any reason, in its sole discretion.</p>
         </div>
- 
+
         <div class="clause" id="tos-conduct">
           <h3>11. Prohibited Conduct</h3>
           <p>You agree not to engage in any of the following, including but not limited to:</p>
           <ul>
-            <li>Manually entering, editing, importing, or otherwise inputting step or health data by hand into Apple Health, Google Health Connect, or any other source rather than physically taking the steps. Only steps automatically recorded by your phone or a connected wearable device count toward challenges; manually entered steps are excluded and any attempt to submit them is considered an attempt to manipulate challenge results</li>
+            <li>Manually entering, editing, importing, or otherwise inputting step or health data by hand into Apple Health, Google Health Connect, or any other source rather than physically taking the steps. Only steps automatically recorded by an eligible step source as described in Section 7 count toward challenges; manually entered steps are excluded and any attempt to submit them is considered an attempt to manipulate challenge results</li>
             <li>Using any device, software, application, or method to artificially inflate your step count, including but not limited to step-counting machines, placing your device on animals or moving vehicles, shake devices, or any other manipulation of step or health data</li>
             <li>Creating multiple accounts or participating under a false identity</li>
             <li>Using another person's account or allowing another person to use yours</li>
             <li>Submitting payment using a payment method you do not own or are not authorized to use</li>
-            <li>Attempting to exploit bugs, vulnerabilities, glitches, or technical malfunctions in the platform</li>
-            <li>Using automated means including bots, scripts, macros, or third-party tools to interact with the app in any way</li>
-            <li>Decompiling, disassembling, reverse engineering, modifying, repackaging, or attempting to extract or reuse the source code or any component of the app, or creating any derivative or modified version of it</li>
+            <li>Attempting to exploit bugs, vulnerabilities, glitches, or technical malfunctions in the App</li>
+            <li>Using bots, scripts, macros, or other automated means to interact with the App, submit data on your behalf, or otherwise circumvent these Terms. This does not apply to the health and wearable apps described in Section 7, which the App relies on to read your step data</li>
+            <li>Decompiling, disassembling, reverse engineering, modifying, repackaging, or attempting to extract or reuse the source code or any component of the App, or creating any derivative or modified version of it</li>
             <li>Engaging in collusion, coordination, or any agreement with other participants to manipulate challenge outcomes or share winnings</li>
-            <li>Using the platform while physically located in an excluded jurisdiction, regardless of where your account was created</li>
-            <li>Engaging in any conduct that disrupts, damages, or impairs the platform or other users' experience</li>
+            <li>Using the App while physically located in an excluded jurisdiction, regardless of where your account was created</li>
+            <li>Engaging in any conduct that disrupts, damages, or impairs the App or other users' experience</li>
             <li>Impersonating any person or entity, or misrepresenting your identity or affiliation</li>
           </ul>
-          <p>Violation of any of these prohibitions may result in immediate account termination, forfeiture of any wallet balance and pending winnings, removal from active challenges without refund, and potential civil or criminal legal action. Any user found to have cheated, falsified or manipulated step data, or otherwise violated these Terms may be permanently banned from the Platform; permanent bans are final, and a banned user is not entitled to reinstatement and may not create a new account. The Platform reserves the right to investigate suspicious activity, disqualify participants, and make final determinations regarding violations at its sole and absolute discretion. All such decisions are final and not subject to appeal.</p>
+          <p>Violation of any of these prohibitions may result in immediate account termination, forfeiture of any wallet balance and pending winnings, removal from active challenges without refund, and potential civil or criminal legal action. Any user found to have cheated, falsified or manipulated step data, or otherwise violated these Terms may be permanently banned from the Platform; permanent bans are final, and a banned user is not entitled to reinstatement and may not create a new account. The Platform reserves the right to investigate suspicious activity, disqualify participants, and make final determinations regarding violations at its sole and absolute discretion. You may ask the Platform to reconsider a determination by contacting us at hello@moneystep.app. Whether to grant, review, or act on any such request is within the Platform's sole and absolute discretion, and the Platform is under no obligation to reconsider any determination or to respond within any particular timeframe. Absent reconsideration, the Platform's determinations are final.</p>
           <p>The Platform reserves the right to request additional verification of your identity, activity, or step data at any time, including where we identify suspicious, irregular, or anomalous activity, and to withhold payouts or disqualify entries pending such verification. If we request such verification, we may also place a hold on any pending or requested withdrawal, and decline to process it, until our review or investigation is complete and we are satisfied that your activity complies with these Terms. We are not obligated to release a withheld payout or withdrawal while a review is ongoing, and a payout or withdrawal determined to be associated with prohibited conduct may be withheld in full.</p>
-          <p>If we request verification of your identity, activity, or step data, you must respond and provide the requested information within seventy-two (72) hours of our request. If you fail to respond within that period, or if you provide false or incomplete information, you forfeit any winnings, wallet balance, and pending or requested withdrawals associated with the challenge or activity under review, and you may be disqualified from the challenge and permanently banned from the Platform. The Platform is not obligated to release any withheld funds while a review is ongoing or where a participant has failed to comply with a verification request.</p>
+          <p>If we request verification of your identity, activity, or step data, you must respond and provide the requested information within seventy-two (72) hours of our request. If you fail to respond within that period, or if you provide false or incomplete information, you forfeit any winnings, wallet balance, and pending or requested withdrawals associated with the challenge or activity under review, and you may be disqualified from the challenge and permanently banned from the Platform. The Platform is not obligated to release any withheld funds while a review is ongoing or where a participant has failed to comply with a verification request, and the Platform may determine in its sole discretion what constitutes an adequate or timely response.</p>
+          <p><strong>Reporting suspected cheating.</strong> If you believe another participant has cheated or otherwise manipulated a challenge, you may report it to us at hello@moneystep.app at any time. The Platform is under no obligation to investigate, reverse, or adjust any result or payout in response to a report, and any action it takes is within its sole and absolute discretion. Amounts already paid out or withdrawn may be impractical to recover, and the Platform does not guarantee recovery or reimbursement. This does not limit the Platform's independent right to investigate and act on suspected cheating on its own initiative at any time.</p>
         </div>
- 
+
         <div class="clause" id="tos-ip">
           <h3>12. Intellectual Property</h3>
-          <p>The Platform — including its name, logo, design, text, graphics, software, and all other content and materials made available through the app (excluding content you provide) — is owned by the Platform and its licensors and is protected by copyright, trademark, and other intellectual property laws. You are granted a limited, personal, non-exclusive, non-transferable, revocable license to access and use the Platform for your own personal, non-commercial use, subject to these Terms. You may not copy, modify, distribute, sell, lease, reverse engineer, or create derivative works from any part of the Platform, and you may not use the Platform's name, logo, or trademarks without our prior written permission. All rights not expressly granted to you are reserved by the Platform.</p>
+          <p>The App, and all content and materials made available through it — including the Moneystep name, logo, design, text, graphics, and software (excluding content you provide) — are owned by the Platform and its licensors and are protected by copyright, trademark, and other intellectual property laws. You are granted a limited, personal, non-exclusive, non-transferable, revocable license to access and use the Platform for your own personal, non-commercial use, subject to these Terms. You may not copy, modify, distribute, sell, lease, reverse engineer, or create derivative works from any part of the App, and you may not use the Platform's name, logo, or trademarks without our prior written permission. All rights not expressly granted to you are reserved by the Platform.</p>
         </div>
- 
+
         <div class="clause" id="tos-user-disputes">
           <h3>13. Disputes Between Users</h3>
           <p>You are solely responsible for your interactions with other users, including through friend connections, leaderboards, and any other social feature of the Platform. The Platform is not a party to, and has no responsibility for, disputes between users. We reserve the right, but have no obligation, to monitor or intervene in any dispute between users, and any decision we make in doing so is final. You release the Platform from any claims, demands, or damages arising out of or related to any dispute with another user.</p>
         </div>
- 
+
         <div class="clause" id="tos-indemnification">
           <h3>14. Indemnification</h3>
-          <p>You agree to indemnify, defend, and hold harmless the Platform and its operators, owners, officers, employees, agents, successors, and assigns from and against any and all claims, demands, damages, losses, liabilities, costs, and expenses (including reasonable attorneys' fees) arising out of or relating to: (a) your use of the Platform; (b) your participation in any challenge; (c) any content you submit, post, or display, including your username and profile photo; (d) your violation of these Terms or the Privacy Policy; (e) your violation of any applicable law or regulation; or (f) your violation of the rights of any third party. The Platform reserves the right, at its own expense, to assume the exclusive defense and control of any matter otherwise subject to indemnification by you, in which case you agree to cooperate with the Platform's defense of that claim.</p>
+          <p>You agree to indemnify, defend, and hold harmless the Platform and its operators, owners, officers, employees, agents, successors, and assigns from and against any and all claims, demands, damages, losses, liabilities, costs, and expenses (including reasonable attorneys' fees) arising out of or relating to: (a) your use of the App; (b) your participation in any challenge; (c) any content you submit, post, or display, including your username and profile photo; (d) your violation of these Terms or the Privacy Policy; (e) your violation of any applicable law or regulation; or (f) your violation of the rights of any third party. The Platform reserves the right, at its own expense, to assume the exclusive defense and control of any matter otherwise subject to indemnification by you, in which case you agree to cooperate with the Platform's defense of that claim.</p>
         </div>
- 
+
         <div class="clause" id="tos-liability">
           <h3>15. Disclaimers and Limitation of Liability</h3>
-          <p>The Platform is provided "as is" and "as available" without warranties of any kind, express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, accuracy, or non-infringement. We do not warrant that the app will be uninterrupted, error-free, secure, or free of harmful components. Use of the platform is entirely at your own risk.</p>
-          <p>To the maximum extent permitted by applicable law, the Platform and its operators, officers, employees, agents, successors, and assigns shall not be liable for any direct, indirect, incidental, special, consequential, exemplary, or punitive damages of any kind, including but not limited to loss of profits, loss of data, loss of goodwill, loss of winnings, personal injury, property damage, or any other intangible losses, arising from or related to your use of or inability to use the platform, regardless of the theory of liability (contract, tort, negligence, strict liability, or otherwise) and even if the Platform has been advised of the possibility of such damages.</p>
-          <p>Our total aggregate liability to you for any and all claims arising from or related to these terms or your use of the platform shall not exceed the total entry fees paid by you in the 90 days immediately preceding the claim giving rise to liability. This limitation applies to the fullest extent permitted by law.</p>
+          <p>The App and all related services are provided &ldquo;as is&rdquo; and &ldquo;as available&rdquo; without warranties of any kind, express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, accuracy, or non-infringement. We do not warrant that the App will be uninterrupted, error-free, secure, or free of harmful components. Use of the App is entirely at your own risk.</p>
+          <p>To the maximum extent permitted by applicable law, the Platform and its operators, officers, employees, agents, successors, and assigns shall not be liable for any direct, indirect, incidental, special, consequential, exemplary, or punitive damages of any kind, including but not limited to loss of profits, loss of data, loss of goodwill, loss of winnings, personal injury, property damage, or any other intangible losses, arising from or related to your use of or inability to use the App, regardless of the theory of liability (contract, tort, negligence, strict liability, or otherwise) and even if the Platform has been advised of the possibility of such damages.</p>
+          <p>Our total aggregate liability to you for any and all claims arising from or related to these terms or your use of the App shall not exceed the total entry fees paid by you in the 90 days immediately preceding the claim giving rise to liability. This limitation applies to the fullest extent permitted by law.</p>
           <p>Some jurisdictions do not allow the exclusion or limitation of certain warranties or damages. In such jurisdictions, the above limitations apply to the fullest extent permitted by applicable law.</p>
         </div>
- 
+
         <div class="clause" id="tos-disputes">
           <h3>16. Dispute Resolution and Waiver of Class Action</h3>
           <p>PLEASE READ THIS SECTION CAREFULLY. IT AFFECTS YOUR LEGAL RIGHTS.</p>
-          <p>Any dispute, claim, or controversy of any kind arising out of or relating to these Terms, the Privacy Policy, the platform, or your use of any services provided through the Platform — including but not limited to disputes regarding formation, validity, enforceability, performance, breach, termination, or any other matter — shall be resolved exclusively by binding individual arbitration administered by the American Arbitration Association (AAA) under its Consumer Arbitration Rules, conducted in the State of Texas.</p>
+          <p>Any dispute, claim, or controversy of any kind arising out of or relating to these Terms, the Privacy Policy, the Platform, or your use of any services provided through the Platform — including but not limited to disputes regarding formation, validity, enforceability, performance, breach, termination, or any other matter — shall be resolved exclusively by binding individual arbitration administered by the American Arbitration Association (AAA) under its Consumer Arbitration Rules, conducted in the State of Texas.</p>
           <p><strong>Waiver of class action and representative claims:</strong> YOU AND THE PLATFORM EACH IRREVOCABLY WAIVE ANY RIGHT TO BRING OR PARTICIPATE IN ANY CLASS ACTION LAWSUIT, CLASS-WIDE ARBITRATION, PRIVATE ATTORNEY GENERAL ACTION, CONSOLIDATED ARBITRATION, OR ANY OTHER REPRESENTATIVE OR COLLECTIVE PROCEEDING OF ANY KIND AGAINST THE OTHER. All disputes must be brought in your individual capacity only. If a court or arbitrator finds that this class action waiver is unenforceable with respect to any claim, then the arbitration agreement shall not apply to that claim, and that claim shall proceed in court — but the waiver shall remain in full force for all other claims.</p>
-          <p>By agreeing to these Terms, you expressly waive your right to a jury trial and your right to participate in any class or representative action. This waiver is a material and non-severable condition of your use of the platform. If you do not agree to this waiver, you may not use the Platform.</p>
+          <p>By agreeing to these Terms, you expressly waive your right to a jury trial and your right to participate in any class or representative action. This waiver is a material and non-severable condition of your use of the App or the Platform. If you do not agree to this waiver, you may not use the App or the Platform.</p>
         </div>
- 
+
         <div class="clause" id="tos-governing">
           <h3>17. Governing Law</h3>
           <p>These Terms of Service are governed by and construed in accordance with the laws of the State of Texas, without regard to conflict of law principles. Any legal proceedings not subject to arbitration shall be brought exclusively in the state or federal courts located in the State of Texas, and you irrevocably consent to personal jurisdiction and venue in such courts.</p>
         </div>
- 
+
         <div class="clause" id="tos-termination">
           <h3>18. Account Termination</h3>
-          <p>The Platform reserves the right to suspend, restrict, or permanently terminate your account at any time, with or without notice, for any reason, including but not limited to violation of these terms, suspicious or fraudulent activity, chargebacks, failure to provide required tax information, or any other reason necessary in our sole judgment to protect the platform and its users. Upon termination for any violation, any pending winnings, wallet balance, or other amounts owed to you may be forfeited in full. The Platform shall not be liable to you or any third party for any termination of your account.</p>
+          <p>The Platform reserves the right to suspend, restrict, or permanently terminate your account at any time, with or without notice, for any reason, including but not limited to violation of these terms, suspicious or fraudulent activity, chargebacks, failure to provide required tax information, or any other reason necessary in our sole judgment to protect the Platform and its users. Upon termination for any violation, any pending winnings, wallet balance, or other amounts owed to you may be forfeited in full. The Platform shall not be liable to you or any third party for any termination of your account.</p>
         </div>
- 
+
         <div class="clause" id="tos-platform">
           <h3>19. App Store and Platform Terms</h3>
           <div class="callout">
-            <p><strong>The stores are not sponsors:</strong> All challenges, competitions, and prizes offered through the Platform are provided and sponsored solely by the Platform. Apple Inc. and Google LLC are not sponsors of, and are not involved in, the challenges or the Platform in any manner. Any questions, complaints, or claims regarding the Platform or a challenge should be directed to us at hello@moneystep.app, not to Apple or Google.</p>
+            <p><strong>The stores are not sponsors:</strong> All challenges, competitions, and prizes offered through the Platform are provided by the Platform or by a third-party sponsor identified in connection with a particular challenge. Apple Inc. and Google LLC are not sponsors of, and are not involved in, the challenges or the Platform in any manner. Any questions, complaints, or claims regarding the Platform or a challenge should be directed to us at hello@moneystep.app, not to Apple or Google.</p>
           </div>
-          <p>This Agreement is between you and the Platform only, and not with Apple or Google. The Platform, and not Apple or Google, is solely responsible for the app and its content.</p>
-          <p>If you obtained the app from the Apple App Store, the following additional terms apply: (a) Apple has no obligation to furnish any maintenance or support for the app; (b) to the maximum extent permitted by applicable law, Apple has no warranty obligation with respect to the app, and in the event of any failure of the app to conform to any applicable warranty, you may notify Apple and Apple will refund the purchase price of the app to you, if any, and to the maximum extent permitted by law Apple will have no other warranty obligation whatsoever with respect to the app; (c) the Platform, not Apple, is responsible for addressing any claims by you or any third party relating to the app, including product liability claims, claims that the app fails to conform to any legal or regulatory requirement, and claims arising under consumer protection or similar legislation; (d) the Platform, not Apple, is responsible for the investigation, defense, settlement, and discharge of any third-party claim that the app or your use of it infringes that third party's intellectual property rights; (e) you represent and warrant that you are not located in a country that is subject to a U.S. Government embargo or that has been designated by the U.S. Government as a "terrorist supporting" country, and that you are not listed on any U.S. Government list of prohibited or restricted parties; and (f) Apple and its subsidiaries are third-party beneficiaries of this Agreement and, upon your acceptance of these Terms, will have the right to enforce this Agreement against you as a third-party beneficiary.</p>
-          <p>If you obtained the app from the Google Play Store, you acknowledge that this Agreement is between you and the Platform only, and not with Google, that Google is not responsible for the app or its content, and that Google is not a sponsor of or involved in any challenge.</p>
+          <p>This Agreement is between you and the Platform only, and not with Apple or Google. The Platform, and not Apple or Google, is solely responsible for the App and its content.</p>
+          <p>If you obtained the App from the Apple App Store, the following additional terms apply: (a) Apple has no obligation to furnish any maintenance or support for the App; (b) to the maximum extent permitted by applicable law, Apple has no warranty obligation with respect to the App, and in the event of any failure of the App to conform to any applicable warranty, you may notify Apple and Apple will refund the purchase price of the App to you, if any, and to the maximum extent permitted by law Apple will have no other warranty obligation whatsoever with respect to the App; (c) the Platform, not Apple, is responsible for addressing any claims by you or any third party relating to the App, including product liability claims, claims that the App fails to conform to any legal or regulatory requirement, and claims arising under consumer protection or similar legislation; (d) the Platform, not Apple, is responsible for the investigation, defense, settlement, and discharge of any third-party claim that the App or your use of it infringes that third party's intellectual property rights; (e) you represent and warrant that you are not located in a country that is subject to a U.S. Government embargo or that has been designated by the U.S. Government as a &ldquo;terrorist supporting&rdquo; country, and that you are not listed on any U.S. Government list of prohibited or restricted parties; and (f) Apple and its subsidiaries are third-party beneficiaries of this Agreement and, upon your acceptance of these Terms, will have the right to enforce this Agreement against you as a third-party beneficiary.</p>
+          <p>If you obtained the App from the Google Play Store, you acknowledge that this Agreement is between you and the Platform only, and not with Google, that Google is not responsible for the App or its content, and that Google is not a sponsor of or involved in any challenge.</p>
         </div>
- 
+
         <div class="clause" id="tos-survival">
           <h3>20. Survival</h3>
           <p>The following provisions survive any termination or expiration of these Terms or of your account, and any deletion of your account: the no-refund provisions (Section 5); Health, Safety, and Assumption of Risk (Section 8); Tax Obligations (Section 9); Prohibited Conduct, including the verification and forfeiture provisions (Section 11); Intellectual Property (Section 12); Disputes Between Users (Section 13); Indemnification (Section 14); Disclaimers and Limitation of Liability (Section 15); Dispute Resolution and Waiver of Class Action (Section 16); Governing Law (Section 17); and the App Store and Platform Terms (Section 19) — together with any other provision that by its nature should survive.</p>
         </div>
- 
+
         <div class="clause" id="tos-assignment">
           <h3>21. Assignment</h3>
           <p>You may not assign or transfer these Terms, or any of your rights or obligations under them, to anyone else, and any attempt to do so is void. The Platform may assign or transfer these Terms, in whole or in part, at any time without restriction, including in connection with a merger, acquisition, reorganization, or sale of all or substantially all of its assets. These Terms bind and benefit each party's permitted successors and assigns.</p>
         </div>
- 
+
         <div class="clause" id="tos-waiver">
           <h3>22. No Waiver</h3>
           <p>The Platform's failure to enforce any provision of these Terms, or to act on any breach, does not waive our right to enforce that provision or to act on that or any later breach. No waiver of any provision of these Terms is effective unless made in writing, and a waiver in one instance does not waive any other provision or any future instance.</p>
         </div>
- 
+
         <div class="clause" id="tos-force-majeure">
           <h3>23. Force Majeure</h3>
           <p>The Platform is not liable for any delay or failure to perform resulting from causes beyond its reasonable control, including but not limited to acts of God, natural disasters, fire, flood, severe weather, war, terrorism, civil unrest, labor disputes, government action, public health emergencies, power or internet outages, or the failure or interruption of third-party services, networks, devices, or infrastructure.</p>
         </div>
- 
+
         <div class="clause" id="tos-severability">
           <h3>24. Severability</h3>
           <p>If any provision of these Terms is found to be invalid, illegal, or unenforceable under applicable law, that provision shall be modified to the minimum extent necessary to make it enforceable, or severed if modification is not possible, without affecting the validity and enforceability of the remaining provisions.</p>
         </div>
- 
+
         <div class="clause" id="tos-entire">
           <h3>25. Entire Agreement</h3>
-          <p>These Terms of Service and the Privacy Policy constitute the entire agreement between you and the Platform with respect to your use of the platform and supersede all prior or contemporaneous agreements, representations, warranties, and understandings, whether written or oral, relating to the subject matter herein.</p>
+          <p>These Terms of Service and the Privacy Policy constitute the entire agreement between you and the Platform with respect to your use of the App and supersede all prior or contemporaneous agreements, representations, warranties, and understandings, whether written or oral, relating to the subject matter herein.</p>
         </div>
- 
+
         <div class="clause" id="tos-changes">
           <h3>26. Changes to Terms</h3>
-          <p>We reserve the right to modify these Terms at any time. Material changes will be communicated via push notification or email at least 14 days before taking effect. Continued use of the app after the effective date constitutes acceptance of the updated terms. If you do not agree to the updated terms, you must stop using the platform before the effective date.</p>
+          <p>We reserve the right to modify these Terms at any time. Material changes will be communicated via push notification or email at least 14 days before taking effect. Continued use of the App after the effective date constitutes acceptance of the updated terms. If you do not agree to the updated terms, you must stop using the App before the effective date.</p>
         </div>
- 
+
       </article>
     </section>
- 
+
     <div class="contact-block">
       <h4>Questions about these documents?</h4>
       <p>We're happy to clarify anything. Reach out to us directly.</p>
       <a href="mailto:hello@moneystep.app">hello@moneystep.app</a>
     </div>
- 
+
   </main>
- 
+
   <footer>
-    <p>© 2026 Moneystep · All rights reserved · <a href="#privacy">Privacy Policy</a> · <a href="#terms">Terms of Service</a></p>
+    <p>© 2026 Moneystep LLC · All rights reserved · <a href="#privacy">Privacy Policy</a> · <a href="#terms">Terms of Service</a></p>
   </footer>
- 
+
 </body>
 </html>

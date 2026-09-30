@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moneystep — Official Challenge Rules</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --surface: #141416;
+      --border: #222226;
+      --accent: #c8f04a;
+      --accent-dim: rgba(200,240,74,0.12);
+      --text: #e8e8ec;
+      --text-muted: #7a7a85;
+      --text-dim: #4a4a55;
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+      --radius: 12px;
+      --max: 760px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 16px; line-height: 1.75; font-weight: 300; -webkit-font-smoothing: antialiased; }
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(13,13,15,0.9); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 24px; }
+    .nav-inner { max-width: var(--max); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 56px; gap: 16px; }
+    .wordmark { font-family: var(--serif); font-size: 20px; color: var(--accent); letter-spacing: -0.02em; white-space: nowrap; text-decoration: none; }
+    .nav-links { display: flex; gap: 4px; list-style: none; }
+    .nav-links a { display: block; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 500; color: var(--text-muted); text-decoration: none; transition: color 0.2s, background 0.2s; white-space: nowrap; }
+    .nav-links a:hover { color: var(--text); background: var(--accent-dim); }
+    @media (max-width: 480px) { .nav-links a { padding: 6px 10px; font-size: 12px; } }
+    .hero { max-width: var(--max); margin: 0 auto; padding: 72px 24px 48px; border-bottom: 1px solid var(--border); }
+    .hero-label { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); background: var(--accent-dim); padding: 4px 12px; border-radius: 20px; margin-bottom: 24px; }
+    .hero h1 { font-family: var(--serif); font-size: clamp(36px, 6vw, 52px); line-height: 1.1; letter-spacing: -0.03em; color: var(--text); margin-bottom: 16px; }
+    .hero p { font-size: 15px; color: var(--text-muted); max-width: 540px; }
+    .hero p a { color: var(--accent); text-underline-offset: 3px; }
+    .hero-meta { margin-top: 32px; display: flex; gap: 32px; flex-wrap: wrap; }
+    .meta-item { display: flex; flex-direction: column; gap: 2px; }
+    .meta-label { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); }
+    .meta-value { font-size: 14px; color: var(--text-muted); }
+    .toc-wrapper { max-width: var(--max); margin: 0 auto; padding: 48px 24px 0; }
+    .toc-doc-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin: 32px 0 16px; }
+    .toc-doc-label:first-child { margin-top: 0; }
+    .toc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 540px) { .toc-grid { grid-template-columns: 1fr; } }
+    .toc-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 24px; text-decoration: none; display: flex; align-items: center; gap: 14px; transition: border-color 0.2s, background 0.2s; }
+    .toc-card:hover { border-color: var(--accent); background: var(--accent-dim); }
+    .toc-number { font-family: var(--serif); font-size: 28px; color: var(--text-dim); line-height: 1; min-width: 28px; }
+    .toc-card:hover .toc-number { color: var(--accent); }
+    .toc-text { display: flex; flex-direction: column; gap: 2px; }
+    .toc-section { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); }
+    .toc-title { font-size: 14px; font-weight: 500; color: var(--text); }
+    main { max-width: var(--max); margin: 0 auto; padding: 64px 24px 120px; }
+    .doc-section { margin-bottom: 80px; }
+    .section-header { display: flex; align-items: center; gap: 16px; margin-bottom: 40px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+    .section-tag { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); background: var(--accent-dim); padding: 4px 12px; border-radius: 20px; white-space: nowrap; }
+    .section-header h2 { font-family: var(--serif); font-size: clamp(28px, 4vw, 38px); letter-spacing: -0.02em; color: var(--text); line-height: 1.15; }
+    article { display: flex; flex-direction: column; gap: 40px; }
+    .clause { padding-left: 24px; border-left: 2px solid var(--border); transition: border-color 0.2s; scroll-margin-top: 72px; }
+    .clause:hover { border-left-color: var(--accent); }
+    .clause h3 { font-family: var(--sans); font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+    .clause p { font-size: 15px; color: var(--text-muted); margin-bottom: 12px; }
+    .clause p:last-child { margin-bottom: 0; }
+    .clause ul, .clause ol { padding-left: 20px; display: flex; flex-direction: column; gap: 6px; margin-top: 8px; margin-bottom: 12px; }
+    .clause ul:last-child, .clause ol:last-child { margin-bottom: 0; }
+    .clause li { font-size: 15px; color: var(--text-muted); }
+    .clause li::marker { color: var(--accent); }
+    .clause strong { color: var(--text); font-weight: 500; }
+    .clause a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+    .clause a:hover { opacity: 0.85; }
+    .callout { background: var(--accent-dim); border: 1px solid rgba(200,240,74,0.25); border-radius: var(--radius); padding: 20px 24px; margin: 12px 0; }
+    .callout p { font-size: 14px; color: var(--text); margin: 0; }
+    .callout strong { color: var(--accent); }
+    .contact-block { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; text-align: center; margin-top: 64px; }
+    .contact-block h4 { font-family: var(--serif); font-size: 22px; color: var(--text); margin-bottom: 8px; }
+    .contact-block p { font-size: 14px; color: var(--text-muted); margin-bottom: 16px; }
+    .contact-block a { display: inline-block; padding: 10px 24px; background: var(--accent); color: #0d0d0f; font-weight: 600; font-size: 14px; border-radius: 8px; text-decoration: none; transition: opacity 0.2s; }
+    .contact-block a:hover { opacity: 0.85; }
+    footer { border-top: 1px solid var(--border); padding: 32px 24px; text-align: center; }
+    footer p { font-size: 13px; color: var(--text-dim); }
+    footer a { color: var(--text-muted); text-decoration: none; }
+    footer a:hover { color: var(--accent); }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a class="wordmark" href="index.html">Moneystep</a>
+      <ul class="nav-links">
+        <li><a href="index.html#privacy">Privacy</a></li>
+        <li><a href="index.html#terms">Terms</a></li>
+        <li><a href="#rules">Challenge Rules</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <span class="hero-label">Official Rules</span>
+    <h1>Official Challenge Rules</h1>
+    <p>These Rules govern every step-count competition offered through the Moneystep App, operated by Moneystep LLC (the &ldquo;Platform&rdquo;). They work together with the <a href="index.html#terms">Terms of Service</a> and the <a href="index.html#privacy">Privacy Policy</a>. Read them before you enroll in any Challenge.</p>
+    <div class="hero-meta">
+      <div class="meta-item">
+        <span class="meta-label">Effective Date</span>
+        <span class="meta-value">September 30, 2026</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Operator</span>
+        <span class="meta-value">Moneystep LLC</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Governing Law</span>
+        <span class="meta-value">State of Texas</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Contact</span>
+        <span class="meta-value">hello@moneystep.app</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="toc-wrapper">
+    <div class="toc-doc-label">Official Challenge Rules</div>
+    <div class="toc-grid">
+      <a class="toc-card" href="#r-apply"><span class="toc-number">1</span><div class="toc-text"><span class="toc-section">Rules</span><span class="toc-title">How These Rules Apply</span></div></a>
+      <a class="toc-card" href="#r-skill"><span class="toc-number">2</span><div class="toc-text"><span class="toc-section">Rules</span><span class="toc-title">Skill-Based Competition</span></div></a>
+      <a class="toc-card" href="#r-eligibility"><span class="toc-number">3</span><div class="toc-text"><span class="toc-section">Rules</span><span class="toc-title">Eligibility</span></div></a>
+      <a class="toc-card" href="#r-states"><span class="toc-number">4</span><div class="toc-text"><span class="toc-section">Rules</span><span class="toc-title">Eligible States</span></div></a>
+      <a class="toc-card" href="#r-excluded"><span class="toc-number">5</span><div class="toc-text"><span class="toc-section">Rules</span><span class="toc-title">Excluded Persons</span></div></a>
+      <a class="toc-card" href="#r-entry"><span class="toc-number">6</span><div class="toc-text"><span class="toc-section">Rules</span><span class="toc-title">Entry &amp; Entry Fees</span></div></a>
+      <a class="toc-card" href="#r-prizes"><span class="toc-number">7</span><div class="toc-text"><span class="toc-section">Rules</span><span class="toc-title">Format &amp; Prize Schedules</span></div></a>
+      <a class="toc-card" href="#r-scoring"><span class="toc-number">8</span><div class="toc-text"><span class="toc-section">Rules</span><span class="toc-title">Scoring</span></div></a>
+      <a class="toc-card" href="#r-sources"><span class="toc-number">9</span><div class="toc-text"><span class="toc-section">Rules</span><span class="toc-title">Approved Step Sources</span></div></a>
+      <a class="toc-card" href="#r-lock"><span class="toc-number">10</span><div class="toc-text"><span class="toc-section">Rules</span><span class="toc-title">The Source Lock</span></div></a>
+      <a class="toc-card" href="#r-sync"><span class="toc-number">11</span><div class="toc-text"><span class="toc-section">Rules</span><span class="toc-title">Syncing &amp; Sync Window</span></div></a>
+      <a class="toc-card" href="#r-settlement"><span class="toc-number">12</span><div class="toc-text"><span class="toc-section">Rules</span><span class="toc-title">Winners &amp; Settlement</span></div></a>
+      <a class="toc-card" href="#r-ties"><span class="toc-number">13</span><div class="toc-text"><span class="toc-section">Rules</span><span class="toc-title">Ties</span></div></a>
+      <a class="toc-card" href="#r-cancellation"><span class="toc-number">14</span><div class="toc-text"><span class="toc-section">Rules</span><span class="toc-title">Cancellation</span></div></a>
+      <a class="toc-card" href="#r-refunds"><span class="toc-number">15</span><div class="toc-text"><span class="toc-section">Rules</span><span class="toc-title">Refunds</span></div></a>
+      <a class="toc-card" href="#r-exit"><span class="toc-number">16</span><div class="toc-text"><span class="toc-section">Rules</span><span class="toc-title">Exiting a Challenge</span></div></a>
+      <a class="toc-card" href="#r-conduct"><span class="toc-number">17</span><div class="toc-text"><span class="toc-section">Rules</span><span class="toc-title">Prohibited Conduct</span></div></a>
+      <a class="toc-card" href="#r-integrity"><span class="toc-number">18</span><div class="toc-text"><span class="toc-section">Rules</span><span class="toc-title">Integrity Reviews</span></div></a>
+      <a class="toc-card" href="#r-appeals"><span class="toc-number">19</span><div class="toc-text"><span class="toc-section">Rules</span><span class="toc-title">Appeals</span></div></a>
+      <a class="toc-card" href="#r-disputes"><span class="toc-number">20</span><div class="toc-text"><span class="toc-section">Rules</span><span class="toc-title">Disputing Your Result</span></div></a>
+      <a class="toc-card" href="#r-payment"><span class="toc-number">21</span><div class="toc-text"><span class="toc-section">Rules</span><span class="toc-title">Prize Payment &amp; Taxes</span></div></a>
+      <a class="toc-card" href="#r-general"><span class="toc-number">22</span><div class="toc-text"><span class="toc-section">Rules</span><span class="toc-title">General Conditions</span></div></a>
+    </div>
+  </div>
+
+  <main>
+
+    <section class="doc-section" id="rules">
+      <div class="section-header">
+        <span class="section-tag">Challenge Rules</span>
+        <h2>How Challenges Work</h2>
+      </div>
+      <article>
+
+        <div class="clause" id="r-apply">
+          <h3>1. These Rules and How They Apply</h3>
+          <p>These Official Challenge Rules (the &ldquo;Rules&rdquo;) govern every step-count competition (each, a &ldquo;Challenge&rdquo;) offered through the Moneystep mobile application (the &ldquo;App&rdquo;), which is operated by Moneystep LLC (the &ldquo;Platform&rdquo;). By enrolling in a Challenge, you agree to these Rules, to the Moneystep <a href="index.html#terms">Terms of Service</a>, and to the Moneystep <a href="index.html#privacy">Privacy Policy</a>. If these Rules conflict with the Terms of Service with respect to the conduct of a Challenge, these Rules control for that Challenge; the Terms of Service otherwise remain in full effect.</p>
+          <p>Each Challenge also has Challenge-specific details posted in the App at the time of enrollment &mdash; including its start and end times, enrollment window, entry fee, prize schedule, minimum number of entrants, and any rank requirement. Those posted details form part of these Rules for that Challenge. The version of these Rules in effect at the time you enroll in a Challenge governs that Challenge for you.</p>
+        </div>
+
+        <div class="clause" id="r-skill">
+          <h3>2. Skill-Based Competition</h3>
+          <p>Every Challenge is a skill-based endurance competition. Outcomes are determined entirely by the number of steps each entrant physically takes during the Challenge, as recorded by that entrant&rsquo;s approved step source &mdash; a result of physical effort, fitness, and sustained activity that is wholly within each entrant&rsquo;s own control. No element of chance, drawing, or random selection determines any outcome, and no prize is awarded on the basis of anything other than counted steps. Challenges are not gambling and are not games of chance.</p>
+        </div>
+
+        <div class="clause" id="r-eligibility">
+          <h3>3. Eligibility</h3>
+          <p>To enroll in a Challenge, you must satisfy all of the following at the time of enrollment:</p>
+          <ul>
+            <li><strong>Account:</strong> you have a Moneystep account in good standing. You may maintain only one account, and only you may use it.</li>
+            <li><strong>Age:</strong> you are at least 18 years of age. You must complete age and identity verification before your first withdrawal.</li>
+            <li><strong>Location:</strong> you are a resident of the United States and are physically located in an Eligible State (<a href="#r-states">Section 4</a>) at the time of account creation, at the time of enrollment, and while taking any steps counted toward a Challenge.</li>
+            <li><strong>Not excluded:</strong> you are not an Excluded Person (<a href="#r-excluded">Section 5</a>).</li>
+            <li><strong>Not self-excluded:</strong> you are not currently self-excluded. You may exclude yourself from paid Challenges at any time from the App&rsquo;s settings, for 30 days, 90 days, one year, or permanently; a self-exclusion cannot be shortened or reversed before the period you selected has ended.</li>
+            <li><strong>Step history:</strong> your account has recorded step data from an approved step source over the preceding four weeks, sufficient to show that your source is active and reliably recording. Manually entered step data does not count toward this requirement. The Platform may adjust the parameters of this requirement at its discretion.</li>
+            <li><strong>Rank:</strong> where a Challenge carries a rank requirement, your assigned rank tier &mdash; based on your recent step activity and recalculated regularly &mdash; meets that requirement. A change in your rank during a Challenge does not affect that Challenge.</li>
+            <li><strong>One Challenge at a time:</strong> you are not enrolled in any other active Challenge. You may participate in only one active Challenge at a time.</li>
+          </ul>
+          <div class="callout">
+            <p><strong>Location verification:</strong> The Platform verifies your location at account creation through your device&rsquo;s GPS position, as well as at each paid challenge entry and each withdrawal request, using a third-party provider designed to detect VPN use and location spoofing. It remains your sole responsibility to ensure that your participation is lawful in your jurisdiction at all times. The Platform may verify eligibility at any time and may disqualify entries and withhold prizes where participation violates these Rules or applicable law.</p>
+          </div>
+        </div>
+
+        <div class="clause" id="r-states">
+          <h3>4. Eligible States</h3>
+          <p>Challenges are open only to entrants physically located in the following states (each an &ldquo;Eligible State&rdquo;): <strong>Colorado, Illinois, Minnesota, New York, North Carolina, and Texas.</strong></p>
+          <p>Participation from any other U.S. state, territory, or from outside the United States is not permitted. The list of Eligible States may change over time; the list in effect at the time of your enrollment, as reflected in the App, governs that Challenge.</p>
+        </div>
+
+        <div class="clause" id="r-excluded">
+          <h3>5. Excluded Persons</h3>
+          <p>The following persons (&ldquo;Excluded Persons&rdquo;) are not eligible to enroll in any Challenge that has an entry fee or awards a cash prize: employees, owners, members, officers, directors, agents, and contractors of the Platform, and members of their households.</p>
+          <p>Excluded Persons may participate only in Challenges that award no cash prize. If an Excluded Person is found to have enrolled in a paid or cash-prize Challenge, the Platform may remove the entry at any time, and any prize position that entry would have occupied passes to the next eligible entrant in the standings.</p>
+        </div>
+
+        <div class="clause" id="r-entry">
+          <h3>6. Entry and Entry Fees</h3>
+          <p>To enter a Challenge, enroll in the App during that Challenge&rsquo;s enrollment window and pay its entry fee, if any. The entry fee for each Challenge is a single flat amount disclosed in the App before you enroll; every entrant in a Challenge pays the same fee. Entry fees do not exceed $40 per Challenge.</p>
+          <p><strong>Payment.</strong> Entry fees are collected through a licensed third-party payment processor. When you enroll, the processor places an authorization on your payment method; funds are captured when the Challenge starts. If the Challenge does not start, the authorization is released and you are not charged.</p>
+          <p><strong>Paying from your wallet.</strong> If you hold a wallet balance from prior winnings, you may apply it to an entry fee instead of paying externally. A wallet-paid entry fee is subject to the same rules &mdash; including the refund rules in <a href="#r-refunds">Section 15</a> &mdash; as any other entry fee.</p>
+          <p><strong>Free Entries.</strong> If you have been granted a Free Entry through the referral program described in the <a href="index.html#tos-fees">Terms of Service</a>, you may apply it to a single paid Challenge of your choosing. The Challenge remains a paid Challenge and you compete on the same terms as paying entrants, including prize eligibility; only your entry fee is covered. A Free Entry spent on a Challenge is not restored if you exit that Challenge.</p>
+          <p><strong>Free Challenges.</strong> Some Challenges have no entry fee and may still award cash prizes. Free Challenges are governed by these Rules in the same way as paid Challenges, except that the entry-fee and refund provisions do not apply. No prize in a Free Challenge is allocated by chance.</p>
+          <p>No entry may be submitted on behalf of another person, and payment must be made using a payment method you own or are authorized to use.</p>
+        </div>
+
+        <div class="clause" id="r-prizes">
+          <h3>7. Challenge Format and Prize Schedules</h3>
+          <p>Each Challenge&rsquo;s prize schedule &mdash; the number of winning placements and the exact dollar amount for each placement &mdash; is fixed and is posted in the App before enrollment opens. Prize amounts do not depend on, and do not scale with, the number of entrants or the amount of entry fees collected.</p>
+          <div class="callout">
+            <p><strong>The prize guarantee and its single condition:</strong> Every Challenge states a minimum number of entrants before enrollment opens. That minimum is the only condition on the prize. If the minimum is not met by the enrollment deadline, the Challenge does not proceed: it is cancelled automatically, no funds are captured, every entry fee already collected is refunded in full, no result is recorded, and no prize is awarded.</p>
+          </div>
+          <p>If the minimum is met, the Challenge proceeds and the posted prizes become an unconditional obligation of the Platform. They are paid in full, exactly as posted, regardless of how many entrants above the minimum enroll, regardless of how much is collected in entry fees, and regardless of whether entry fees cover the prizes. The Platform bears any shortfall. No prize amount is reduced, withheld, or recalculated because enrollment was lower than expected.</p>
+          <p>Prizes are funded by the Platform, or by a sponsor identified for the Challenge, from a segregated reserve funded before enrollment opens. The Platform takes no percentage of, and no fee from, any prize.</p>
+          <p>Entrants who finish outside the cash-winning placements receive points, as described in the Terms of Service. Points are not a prize, have no cash value, and are not allocated by chance.</p>
+        </div>
+
+        <div class="clause" id="r-scoring">
+          <h3>8. Scoring</h3>
+          <p>Your score in a Challenge is the total number of steps you physically take between the Challenge&rsquo;s start time and end time, as automatically recorded by your locked step source (<a href="#r-sources">Sections 9</a> and <a href="#r-lock">10</a>) and as synced to the Platform by settlement (<a href="#r-sync">Section 11</a>). Standings are ordered by total counted steps, highest first.</p>
+          <ul>
+            <li>Only steps automatically recorded by your locked source count. Steps recorded by any other app, device, or source do not count, even if they appear in your health app.</li>
+            <li>Manually entered step data never counts, from any source, under any circumstances. Any attempt to submit manually entered data is treated as an attempt to manipulate Challenge results (<a href="#r-conduct">Section 17</a>).</li>
+            <li>Steps taken outside the Challenge&rsquo;s start and end times do not count.</li>
+          </ul>
+          <p>The Platform&rsquo;s records at settlement are the scoring records for a Challenge, subject only to <a href="#r-integrity">Sections 18&ndash;20</a>.</p>
+        </div>
+
+        <div class="clause" id="r-sources">
+          <h3>9. Approved Step Sources</h3>
+          <p>The App reads step data through Apple Health (iOS) or Google Health Connect (Android), and counts steps only from approved sources. The approved sources are currently:</p>
+          <ul>
+            <li><strong>On iPhone:</strong> Apple Health (covering the iPhone&rsquo;s built-in step counter and Apple Watch), Garmin, and Oura Ring.</li>
+            <li><strong>On Android:</strong> Garmin only. If you use an Android device without a connected Garmin, no approved step source is available to you and you will not be able to accumulate countable steps.</li>
+          </ul>
+          <p>Approved sources are vetted and determined by the Platform in its discretion and may change as devices and platforms change; the App reflects the sources available to your account.</p>
+        </div>
+
+        <div class="clause" id="r-lock">
+          <h3>10. The Source Lock</h3>
+          <p>One step source is set for your account before you enroll, and you may change it in the App&rsquo;s settings at any time before enrolling. When you enroll in a Challenge, your then-selected source is locked to that entry and cannot be changed for the duration of that Challenge, including its post-Challenge sync window. Only steps recorded by your locked source count toward that Challenge.</p>
+          <p>It is your responsibility to choose the source that accurately reflects the steps you physically take, and to keep that source recording and syncing throughout the Challenge. If your locked source stops recording or syncing, your counted total may stop advancing, and your most recently synced total will be used.</p>
+        </div>
+
+        <div class="clause" id="r-sync">
+          <h3>11. Syncing and the Post-Challenge Sync Window</h3>
+          <p>The App reads your step data when you open it, and it can only read steps that your phone and connected apps have already delivered into Apple Health or Google Health Connect. Keeping your data synced is your responsibility:</p>
+          <ul>
+            <li><strong>During a Challenge:</strong> keep your wearable and its companion app (for example, Garmin Connect or the Oura app) synced and up to date, and open the App regularly.</li>
+            <li><strong>Battery optimization:</strong> some Android manufacturers apply aggressive battery-saving features that can interfere with syncing between Garmin Connect, Health Connect, and the App. We recommend exempting both Moneystep and Garmin Connect from battery optimization in your device settings.</li>
+            <li><strong>Post-Challenge sync window:</strong> after a Challenge ends, sync your apps and open the App within 24 hours of the Challenge end time, so your complete step data is captured before results are finalized.</li>
+            <li><strong>Settlement:</strong> results are finalized (&ldquo;settled&rdquo;) approximately 24 hours after the Challenge end time. Step data not synced to the Platform by settlement is not included in your final total; your most recently synced total is used.</li>
+          </ul>
+          <div class="callout">
+            <p><strong>Android users &mdash; refresh Garmin Connect at the end of each day:</strong> On Android, Health Connect holds only what Garmin Connect has written into it. Steps that remain on your watch and have not synced to Garmin Connect do not exist as far as the App is concerned. Refresh Garmin Connect at the end of each day, after you have taken your steps for that day. Refreshing earlier in the day does not reliably write that day&rsquo;s full step count into Health Connect, and steps taken after an early refresh may not be written for that day at all. This is a limitation of how Garmin Connect and Health Connect exchange data and is outside the Platform&rsquo;s control.</p>
+          </div>
+          <div class="callout">
+            <p><strong>If you never open the App, your total is zero:</strong> If you never open the App during a Challenge or within its post-Challenge sync window, no step data can be captured and your final total will be zero, regardless of how many steps you physically took.</p>
+          </div>
+          <p>The Platform is not responsible for incomplete, missing, or delayed step data resulting from device settings, device or app failures, manufacturer battery-optimization restrictions, network outages, or failure to sync within the required timeframes.</p>
+        </div>
+
+        <div class="clause" id="r-settlement">
+          <h3>12. Winner Determination and Settlement</h3>
+          <p>At settlement, entrants are ranked by total counted steps, highest first, and the posted prize schedule is applied to the final standings. Prize placements are awarded to the highest-ranked eligible entrants; any placement that would fall to an ineligible or disqualified entry passes to the next eligible entrant in the standings. Prizes are credited to winners&rsquo; in-app wallets at settlement, subject to the integrity, verification, and eligibility provisions of <a href="#r-eligibility">Section 3</a> and <a href="#r-conduct">Sections 17&ndash;20</a>.</p>
+        </div>
+
+        <div class="clause" id="r-ties">
+          <h3>13. Ties</h3>
+          <p>If two or more entrants tie for a cash-winning placement, they split the combined prize amounts of the placements occupied by the tied entrants. For example, if three entrants tie for 4th place in a Challenge with ten cash-winning places, those three split the combined 4th, 5th, and 6th place prizes, and the entrant with the next-highest step count receives the 7th place prize. If entrants tie for the final cash-winning place, they split that single prize.</p>
+          <p>Each tied entrant&rsquo;s share is computed in whole cents, rounded down to the nearest cent, with any remainder retained by the Platform. Every entrant occupying a cash-winning placement receives a payment of at least one cent &mdash; no cash placement is ever paid zero.</p>
+          <p>Because ties can affect the amount an individual entrant receives, posted per-placement amounts are shown as expected amounts until the Challenge is settled. The total posted prize for the Challenge does not change.</p>
+        </div>
+
+        <div class="clause" id="r-cancellation">
+          <h3>14. Cancellation</h3>
+          <p><strong>Before a Challenge starts.</strong> A Challenge that does not reach its posted minimum number of entrants by its enrollment deadline is cancelled and does not proceed. The Platform may also cancel a Challenge before it starts for any other reason. If a Challenge is cancelled before it starts, no funds are captured, all entry fees received for it are refunded in full &mdash; fees paid externally are returned, fees paid from wallet balance are restored to the wallet, and a Free Entry applied to that Challenge is restored &mdash; and enrollees are notified.</p>
+          <p><strong>After a Challenge starts.</strong> The Platform may cancel a Challenge after it has begun only where the Challenge cannot be completed fairly or lawfully, including a technical failure affecting the integrity of scoring, a legal or regulatory requirement, or an event beyond the Platform&rsquo;s reasonable control. In that case no results are recorded for that Challenge, no prizes are awarded, no result is entered in any entrant&rsquo;s career statistics, and every entry fee for that Challenge is refunded in full.</p>
+        </div>
+
+        <div class="clause" id="r-refunds">
+          <h3>15. Refunds</h3>
+          <div class="callout">
+            <p><strong>Entry fees are final:</strong> Except as provided in <a href="#r-cancellation">Section 14</a> (cancellation by the Platform), all entry fees are final and non-refundable in all circumstances &mdash; including voluntary exit before or after the Challenge begins, injury, illness, device malfunction, loss of connectivity, step-sync failure, removal or disqualification for prohibited conduct, and dissatisfaction with results.</p>
+          </div>
+          <p>If you exit before a Challenge starts, your entry-fee authorization is released and you are not charged.</p>
+        </div>
+
+        <div class="clause" id="r-exit">
+          <h3>16. Exiting a Challenge</h3>
+          <p>You may voluntarily exit a Challenge at any time, before or after it starts.</p>
+          <ul>
+            <li><strong>Before the Challenge starts:</strong> your authorization is released and you are not charged. You are free to enroll in another Challenge immediately.</li>
+            <li><strong>After the Challenge starts:</strong> your entry fee is not refunded, and a Free Entry applied to that Challenge is not restored. You are removed from the Challenge and its leaderboard, you receive no prize, and you are free to enroll in another Challenge immediately.</li>
+          </ul>
+          <p>Exits are recorded in your career statistics; exiting after a Challenge has started counts as a last-place finish for statistical purposes. Steps taken during an exited Challenge are not credited toward your career step totals or any global leaderboard.</p>
+        </div>
+
+        <div class="clause" id="r-conduct">
+          <h3>17. Prohibited Conduct and Disqualification</h3>
+          <p>The following conduct is prohibited in connection with any Challenge. The full prohibited-conduct provisions of the Terms of Service (<a href="index.html#tos-conduct">&sect;11</a>) also apply. Prohibited conduct includes, without limitation:</p>
+          <ul>
+            <li>Manually entering, editing, importing, or otherwise inputting step or health data by hand rather than physically taking the steps.</li>
+            <li>Using any device, application, or method to artificially generate or inflate step counts, or any other manipulation of step or health data.</li>
+            <li>Creating or using multiple accounts, participating under a false identity, or using or sharing another person&rsquo;s account.</li>
+            <li>Generating or attempting to generate referral credit through fraud or abuse, including self-referrals, referrals of duplicate or fabricated accounts, or any coordinated scheme to accumulate referrals.</li>
+            <li>Colluding, coordinating, or agreeing with other entrants to manipulate outcomes or share winnings.</li>
+            <li>Exploiting bugs, vulnerabilities, or malfunctions in the App, or using bots, scripts, or other automation to interact with it.</li>
+            <li>Using a VPN, proxy, location-spoofing tool, or any other method to disguise or misrepresent your location.</li>
+            <li>Participating while physically located outside an Eligible State, or while otherwise ineligible under <a href="#r-eligibility">Section 3</a>.</li>
+            <li>Submitting payment with a method you do not own or are not authorized to use.</li>
+          </ul>
+          <p>Where the Platform determines that an entrant has engaged in prohibited conduct, it may disqualify the entry, remove the entrant from the Challenge without refund, withhold or reclaim any associated prize, forfeit associated winnings and wallet balance in accordance with the Terms of Service, and suspend or permanently ban the account. A prize position vacated by a disqualified entry passes to the next eligible entrant in the standings. Determinations are made through the process described in <a href="#r-integrity">Sections 18</a> and <a href="#r-appeals">19</a>.</p>
+        </div>
+
+        <div class="clause" id="r-integrity">
+          <h3>18. Integrity Reviews and Verification</h3>
+          <p>The Platform monitors Challenge activity for signs of manipulation, irregularity, or conduct inconsistent with these Rules.</p>
+          <p>The Platform may at any time require you to verify your identity, your activity, or your step data &mdash; including where activity associated with your account is identified as suspicious, irregular, or anomalous. If verification is requested:</p>
+          <ul>
+            <li>You must respond and provide the requested information within seven (7) days of the request. We will send at least two notices during that period.</li>
+            <li>While a review is ongoing, any prize, wallet balance, or withdrawal associated with the Challenge or activity under review is placed on hold. A hold is not a forfeiture: held amounts are released if the review resolves in your favor. Funds in your account that are not associated with the activity under review are not held.</li>
+            <li>At the conclusion of a review the Platform will provide a written determination stating the basis for its decision. Forfeiture occurs only where the Platform determines that a violation occurred.</li>
+            <li>If you fail to respond within the seven-day period, or provide false or materially incomplete information, the Platform may make a determination on the information available to it, and the associated entry may be disqualified and the associated amounts forfeited, and your account suspended or banned &mdash; subject to your appeal right in <a href="#r-appeals">Section 19</a>.</li>
+          </ul>
+          <p>The Platform determines in its discretion what constitutes an adequate response, and is not obligated to release held amounts while a review is ongoing.</p>
+          <p><strong>Repeated suspicious activity.</strong> Where activity associated with your account is repeatedly identified as suspicious, the Platform may suspend or permanently terminate your account and forfeit any wallet balance and pending winnings, whether or not any individual instance was separately confirmed as a violation and whether or not you were notified of any prior instance. The methods, criteria, and thresholds the Platform uses to identify suspicious activity are confidential and are not disclosed.</p>
+        </div>
+
+        <div class="clause" id="r-appeals">
+          <h3>19. Appeals</h3>
+          <p>You may appeal a disqualification, forfeiture, or other adverse integrity determination one time. To appeal, email <a href="mailto:hello@moneystep.app">hello@moneystep.app</a> within seven (7) days of the notice of the determination, identifying the Challenge and stating the grounds for your appeal and any supporting information.</p>
+          <p>An appeal is reviewed by a person other than the person who made the original determination, and the Platform will respond within ten (10) business days. Amounts on hold remain on hold during the appeal. The appeal decision is final. A determination that is not appealed within the seven-day window becomes final. You must complete this appeal process before commencing arbitration under <a href="index.html#tos-disputes">Section 16 of the Terms of Service</a> in respect of that determination.</p>
+        </div>
+
+        <div class="clause" id="r-disputes">
+          <h3>20. Disputing Your Own Result</h3>
+          <p>Separately from integrity appeals, if you believe your own final step count or placement in a settled Challenge is incorrect &mdash; for example, steps you physically took were not counted &mdash; you must notify the Platform at <a href="mailto:hello@moneystep.app">hello@moneystep.app</a> within seven (7) days after that Challenge is settled, identifying the Challenge and describing the claimed error. After that window, your final result is deemed accepted and final as to you. Whether and how to act on any notice is within the Platform&rsquo;s discretion.</p>
+        </div>
+
+        <div class="clause" id="r-payment">
+          <h3>21. Prize Payment and Taxes</h3>
+          <p>Prizes are credited to your in-app wallet at settlement and are paid through a licensed third-party payment processor. You may request a withdrawal from the Payments &amp; Wallet section of the App&rsquo;s settings. Your location is verified and your age and identity verification must be complete before your first withdrawal is processed.</p>
+          <p>You are solely responsible for the accuracy of your withdrawal information; the Platform is not responsible for payments misdirected due to information you provided. Wallet balances may alternatively be applied to future entry fees. Any balance remaining in your wallet after a period of inactivity is paid out to you automatically.</p>
+          <p>You are solely responsible for all taxes on prizes. If your cumulative gross winnings in a calendar year equal or exceed $2,000, you will be required to provide a valid Social Security Number or Employer Identification Number before further payouts are processed, and the Platform will issue a Form 1099 as required by law. Failure to provide required tax information may result in a hold on winnings until it is received.</p>
+        </div>
+
+        <div class="clause" id="r-general">
+          <h3>22. General Conditions</h3>
+          <ul>
+            <li>These Rules incorporate, and are subject to, the Moneystep <a href="index.html#terms">Terms of Service</a> and <a href="index.html#privacy">Privacy Policy</a>, including the dispute-resolution, arbitration, and class-action-waiver provisions of the Terms of Service (<a href="index.html#tos-disputes">&sect;16</a>), the limitation of liability (<a href="index.html#tos-liability">&sect;15</a>), and the health, safety, and assumption-of-risk provisions (<a href="index.html#tos-health">&sect;8</a>).</li>
+            <li>The Platform may amend these Rules from time to time. Amendments apply prospectively: the version of these Rules and the Challenge-specific details posted at the time of your enrollment govern that Challenge for you.</li>
+            <li>Your username, your counted step total, and your placement are visible to every other entrant in any Challenge you join, live during the Challenge and in challenge history after it ends. Your username, global leaderboard standings, and any leaderboard badges you hold are visible more broadly as described in the Privacy Policy.</li>
+            <li>Apple Inc. and Google LLC are not sponsors of, and are not involved in, any Challenge in any manner.</li>
+            <li>If any provision of these Rules is held unenforceable, it is to be modified to the minimum extent necessary or severed, without affecting the remaining provisions.</li>
+            <li>These Rules are governed by the laws of the State of Texas, without regard to conflict-of-law principles.</li>
+          </ul>
+        </div>
+
+      </article>
+    </section>
+
+    <div class="contact-block">
+      <h4>Questions about these Rules?</h4>
+      <p>We're happy to clarify anything. Reach out to us directly.</p>
+      <a href="mailto:hello@moneystep.app">hello@moneystep.app</a>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Moneystep LLC · All rights reserved · <a href="index.html#privacy">Privacy Policy</a> · <a href="index.html#terms">Terms of Service</a> · <a href="#rules">Official Challenge Rules</a></p>
+  </footer>
+
+</body>
+</html>
